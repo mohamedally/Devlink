@@ -9,8 +9,8 @@ export const Container = styled(Flex)`
   width: 150px; */
   margin: 15px;
   padding: 5px;
-  /* align-items: center; */
-  /* justify-content: center; */
+  align-items: center; 
+  justify-content: center; 
   background-color: lightcoral;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};

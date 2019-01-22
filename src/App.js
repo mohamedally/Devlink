@@ -18,7 +18,7 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <div className="App">
-            <h3>DevLink</h3>
+            <h3>devLink</h3>
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />

@@ -9,6 +9,7 @@
     "react": "^16.6.3",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.6.3",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.3",
     "styled-components": "^4.1.3",
@@ -38,18 +39,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "description": "A website for developers to meet with other developers for the purpose of collaborating in projects",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mohamedally/Devlink.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mohamedally/Devlink/issues"
-  },
-  "homepage": "https://github.com/mohamedally/Devlink#readme"
+  ]
 }

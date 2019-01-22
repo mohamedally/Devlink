@@ -9,14 +9,16 @@ class Navbar extends React.Component {
     return (
       <div>
         <nav>
-          <Link to="/profile">My Profile</Link>
-          <Link to="/wall">Wall</Link>
+          <div>
+            <Link to="/profile">My Profile</Link>
+          </div>
+          <div>
+            <Link to="/wall">Wall</Link>
+          </div>
         </nav>
-        {/* <Switch>
-          <Route path="/profile" component={UserProfile} />
-          <Route path="/wall" component={Wall} />
-        </Switch> */}
       </div>
-);}}
+    );
+  }
+}
 
 export default Navbar;

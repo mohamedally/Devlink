@@ -16,6 +16,8 @@ class SignUp extends Component {
       newUser: {
         name: "",
         email: "",
+        github: "",
+        zipcode: "",
         password: "",
         skills: "",
         bio: ""
@@ -82,6 +84,24 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* password of the user */}
+        <input
+          className="form-input"
+          type="text"
+          name="github"
+          value={this.state.newUser.github}
+          placeholder="Your Github Link"
+          onChange={e => this.handleInput(e)}
+        />{" "}
+        {/* Github of the user */}
+        <input
+          className="form-input"
+          type="text"
+          name="zipcode"
+          value={this.state.newUser.zipcode}
+          placeholder="Zipcode"
+          onChange={e => this.handleInput(e)}
+        />{" "}
+        {/* Zipcode of the user */}
         <Select
           name={"skills"}
           options={this.state.skillOptions}

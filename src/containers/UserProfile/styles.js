@@ -7,7 +7,7 @@ export const Container = styled(Flex)`
   flex-direction: column;
   /* height: 150px;
   width: 150px; */
-  margin: 5px;
+  margin: 15px;
   padding: 5px;
   /* align-items: center; */
   /* justify-content: center; */

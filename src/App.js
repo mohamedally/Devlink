@@ -18,12 +18,13 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <div className="App">
+            <h3>DevLink</h3>
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/wall" component={Wall} />
               <Route path="/profile" component={userProfile} />
-              <Redirect to="/" />
+              {/* <Redirect to="/" /> */}
             </Switch>
           </div>
         </ThemeProvider>

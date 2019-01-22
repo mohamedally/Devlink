@@ -12,4 +12,6 @@ export const Container = styled(Flex)`
   /* align-items: center; */
   /* justify-content: center; */
   background-color: lightcoral;
+  font-family: ${({ theme }) => theme.fonts.primary.family};
+  font-weight: ${({ theme }) => theme.fonts.primary.weight};
 `;

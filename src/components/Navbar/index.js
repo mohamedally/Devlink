@@ -16,3 +16,5 @@ const Navbar = () =>
       </div>
     </BrowserRouter>
   );
+
+export default Navbar;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 /* Import Components */
 // import CheckBox from '../components/CheckBox';
@@ -32,6 +33,8 @@ class SignUp extends Component {
     // Form submission logic
     e.preventDefault();
     let userData = this.state.newUser;
+    let path = `/wall`;
+    this.props.history.push(path);
   };
 
   handleInput = e => {
@@ -104,4 +107,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

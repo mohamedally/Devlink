@@ -1,18 +1,12 @@
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import ReactDOM from "react-dom";
+import React from 'react'
+import { Container, StyledLink } from './styles'
 
-const Navbar = () =>
-  ReactDOM.render(
-    <BrowserRouter>
-      <div>
-        <nav>
-          <Link to="/profile">My Profile</Link>
-          <Link to="/wall">Wall</Link>
-        </nav>
-        <Switch>
-          <Route path="/profile" component={userProfile} />
-          <Route path="/wall" component={Wall} />
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
+const Navbar = () => (
+  <Container>
+    <StyledLink to="/profile">My Profile</StyledLink>
+    <StyledLink to="/wall">Wall</StyledLink>
+  </Container>
+)
+
+export default Navbar
+

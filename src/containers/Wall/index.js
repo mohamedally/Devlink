@@ -1,10 +1,11 @@
 import React from "react";
+import { Wall, Text } from "./styles";
 // import ReactDOM from "react-dom";
 
-class Wall extends React.Component {
-  render() {
-    return <div>Hello World</div>;
-  }
-}
+const Feed = () => (
+  <Wall>
+    <Text>Other devLinkers</Text>
+  </Wall>
+);
 
-export default Wall;
+export default Feed;

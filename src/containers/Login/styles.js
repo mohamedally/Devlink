@@ -8,7 +8,7 @@ export const Text = styled(Flex)`
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
 `
 
-export const Wall = styled(Flex)`
+export const Container = styled(Flex)`
   background-color: ${({ theme }) => theme.colors.devLogo};
   height: 15em;
   width: 100%;

@@ -19,14 +19,14 @@ class Home extends Component {
   handleLogin = e => {
     e.preventDefault();
     this.setState({
-      showLogInComponent: true
+      showLogInComponent: !this.state.showLogInComponent
     });
   };
 
   handleSignUp = e => {
     e.preventDefault();
     this.setState({
-      showSignUpComponent: true
+      showSignUpComponent: !this.state.showSignUpComponent
     });
   };
 

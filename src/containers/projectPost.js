@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "./UserProfile/styles";
+import { Container } from "./MyUserProfile/styles";
 import Button from "../components/Button";
 const uuid = require("uuidv4");
 // import ReactDOM from "react-dom";
@@ -9,7 +9,8 @@ class ProjectPost extends React.Component {
     super(props);
 
     this.state = {
-      collaborators: []
+      collaborators: [],
+      accepted: []
     };
     this.handleRequest = this.handleRequest.bind(this);
   }

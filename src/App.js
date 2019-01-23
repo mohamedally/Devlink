@@ -9,7 +9,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import Home from "./containers/Home/";
 import Wall from "./containers/Wall/";
-import userProfile from "./containers/UserProfile/";
+import MyUserProfile from "./containers/MyUserProfile/";
 import Navbar from "./components/Navbar";
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/wall" component={Wall} />
-              <Route path="/profile" component={userProfile} />
+              <Route path="/profile" component={MyUserProfile} />
               {/* <Redirect to="/" /> */}
             </Switch>
           </div>

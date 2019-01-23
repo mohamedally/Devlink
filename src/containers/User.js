@@ -1,6 +1,6 @@
 // import React, { Component } from "react";
 // import Login from "./Login";
-// import userProfile from "./UserProfile";
+// import MyUserProfile from "./MyUserProfile";
 // import SignUp from "./SignUp";
 
 // class User extends Component {
@@ -24,7 +24,7 @@
 //     return (
 //       <div>
 //         <SignUp user={this.state.newUser} />
-//         <userProfile user={this.state.newUser} />
+//         <MyUserProfile user={this.state.newUser} />
 //       </div>
 //     );
 //   }

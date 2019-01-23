@@ -1,0 +1,12 @@
+.my-button {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: white;
+    border: 2px solid purple;
+    font-size: 20px;
+  }
+  
+  .my-button:hover {
+    background-color: purple; 
+    color: white;
+  }

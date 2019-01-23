@@ -3,6 +3,7 @@ import Welcome from "../../components/Welcome";
 import Button from "../../components/Button";
 import SignUp from "../SignUp";
 import Login from "../Login";
+import { Container } from "./styles";
 
 class Home extends Component {
   constructor(props) {
@@ -34,14 +35,16 @@ class Home extends Component {
     return (
       <React.Fragment>
         <Welcome />
-        <div>
-          <Button title="Login" action={e => this.handleLogin(e)} />
-          {this.state.showLogInComponent ? <Login /> : null}
-        </div>
-        <div>
-          <Button title="Sign Up" action={e => this.handleSignUp(e)} />
-          {this.state.showSignUpComponent ? <SignUp /> : null}
-        </div>
+        <Container>
+          <div>
+            <Button title="Login" action={e => this.handleLogin(e)}/>
+            {this.state.showLogInComponent ? <Login /> : null}
+          </div>
+          <div>
+            <Button title="Sign Up" action={e => this.handleSignUp(e)} />
+            {this.state.showSignUpComponent ? <SignUp /> : null}
+          </div>
+        </Container>
       </React.Fragment>
     );
   }

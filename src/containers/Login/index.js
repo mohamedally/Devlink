@@ -45,6 +45,7 @@ class Login extends Component {
   render() {
     return (
       <div>
+        <p></p>
         <input
           className="form-input"
           type="text"
@@ -54,6 +55,7 @@ class Login extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* email of the user */}
+        <p></p>
         <input
           className="form-input"
           name="password"
@@ -63,8 +65,10 @@ class Login extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* password of the user */}
+        <p></p>
         <Button title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
         {/*Submit */}
+        <p></p>
       </div>
     );
   }

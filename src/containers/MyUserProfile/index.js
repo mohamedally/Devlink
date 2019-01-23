@@ -29,13 +29,13 @@ class MyUserProfile extends React.Component {
         {/* to={`/user/${id}`} */}
         <Container>
           <h1>Jordan Lawanson</h1>
-          <div>Email: jordan@me.com</div>
-          <div>
-            Github:{" "}
+          <Title>Email:</Title>
+          <Title>
+            Github: {" "}
             <a href="githublink" style={{color: 'purple'}}>
               https://github.com/jlawanson
             </a>
-          </div>
+          </Title>
           <div>Cambridge, MA</div>
           <p></p>
           <Title>Skills:</Title>

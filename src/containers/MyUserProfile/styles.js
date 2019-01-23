@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Flex } from "grid-styled";
-import { Link } from "react-router-dom";
 
 export const Container = styled(Flex)`
   display: flex;
@@ -14,4 +13,8 @@ export const Container = styled(Flex)`
   background-color: lightcoral;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
+`
+
+export const Title = styled(Flex)`
+  font-weight: bolder;
 `;

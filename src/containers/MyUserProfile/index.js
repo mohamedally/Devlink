@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "./styles";
+import { Container, Title } from "./styles";
 import MyProjectPost from "../MyProjectPost";
 import Button from "../../components/Button";
 import SignUp from "../SignUp";
@@ -37,14 +37,14 @@ class MyUserProfile extends React.Component {
             </a>
           </div>
           <div>Cambridge, MA</div>
-          <div>Skills:</div>
-          <ul>
+          <Title>Skills:</Title>
+          <ul style={{listStyle: 'none', marginLeft: '0'}}>
             <li>Developing</li>
             <li>Programming</li>
           </ul>
           <div>This is all you need to know about me</div>
           <div>Projects:</div>
-          <ul>
+          <ul style={{listStyle: 'none', marginLeft: '0'}}>
             <li>
               <MyProjectPost />
             </li>

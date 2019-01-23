@@ -20,14 +20,14 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <div className="App">
-            <StyledH3>devLink</StyledH3>
+            <StyledH3>devLink™</StyledH3>
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/wall" component={Wall} />
               <Route path="/profile" component={MyUserProfile} />
               <Route path="/user" component={User} />
-              {/* <Redirect to="/" /> */}
+              <Redirect to="/" />
             </Switch>
           </div>
         </ThemeProvider>

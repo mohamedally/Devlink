@@ -8,32 +8,32 @@ export const Container = styled(Flex)`
   width: 150px; */
   margin: 15px;
   padding: 5px;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   text-justify: center;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
   background-color: lightcoral;
-`
+`;
 
 export const Title = styled(Flex)`
   font-weight: bolder;
-  font-size: 2.5rem; 
-  justify-content: center; 
-`
+  font-size: 2.5rem;
+  justify-content: center;
+`;
 export const Name = styled(Flex)`
   font-weight: bolder;
   font-size: 1.5rem;
   justify-content: center;
-`
+`;
 
 export const People = styled(Flex)`
   font-weight: bolder;
-  font-size: 1.5rem;
-`
+  font-size: 1rem;
+  justify-content: center;
+`;
 
 export const ThreadTitle = styled(Flex)`
   font-weight: bolder;
-  font-size: 3.0rem;
-`
-;
+  font-size: 3rem;
+`;

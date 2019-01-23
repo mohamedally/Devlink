@@ -1,7 +1,5 @@
 import React from "react";
-import ProjectPost from "../projectPost";
 import Button from "../../components/Button";
-import AddPost from "../AddPost";
 import { StyledLink } from "../../components/Navbar/styles";
 import { Container, Title, Name, People, ThreadTitle } from "./styles";
 const uuid = require("uuidv4");
@@ -79,15 +77,25 @@ class Wall extends React.Component {
           </div>
           <div>
             <StyledLink to="/user">
-              <Name>Creator: {post.username}</Name>
+              <Name>{post.username}</Name>
             </StyledLink>
           </div>
           <div>{post.projectdescription}</div>
           <Button title="Request to Join" action={e => this.handleRequest(e)} />
           <div>
             <People>Requested collaborators:</People>
-            <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>{collaborators}</ul>
+            <ul
+              style={{
+                listStyle: "none",
+                margin: "0px",
+                padding: "0px",
+                textAlign: "center"
+              }}
+            >
+              {collaborators}
+            </ul>
           </div>
+          <p />
         </li>
       );
     });
@@ -99,7 +107,7 @@ class Wall extends React.Component {
         {/* {this.state.showAddComponent ? <AddPost /> : null} */}
         <Container>
           <ThreadTitle>Post Project</ThreadTitle>
-          <p></p>
+          <p />
           <input
             className="form-input"
             name="projectTitle"
@@ -108,27 +116,33 @@ class Wall extends React.Component {
             placeholder="Project Title"
             onChange={e => this.handleInput(e)}
           />
-          <p></p>
+          <p />
           <textarea
             className="form-input"
             type="text"
             name="projectDescription"
-            rows="10" cols="50"
+            rows="10"
+            cols="50"
             value={this.state.projectDescription}
             placeholder="Project Description"
-            onChange={e => this.handleInput(e)
-            }
+            onChange={e => this.handleInput(e)}
           />{" "}
           <Button title="Add Post" action={e => this.handleFormSubmit(e)} />{" "}
           {/*Submit */}
-          <p></p>
+          <p />
           <ThreadTitle>Project Thread:</ThreadTitle>
-          <p></p>
-          <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>{posts}</ul>
+          <p />
+          <ul
+            style={{
+              listStyle: "none",
+              margin: "0px",
+              padding: "0px",
+              textAlign: "center"
+            }}
+          >
+            {posts}
+          </ul>
         </Container>
-        {/* <ProjectPost />
-        <ProjectPost />
-        <ProjectPost /> */}
       </React.Fragment>
     );
   }

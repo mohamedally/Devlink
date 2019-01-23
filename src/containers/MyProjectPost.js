@@ -1,7 +1,5 @@
 import React from "react";
-import ProjectPost from "./projectPost";
 import Button from "../components/Button";
-import Wall from "./Wall";
 import { Container, Title3 } from "./MyUserProfile/styles";
 const uuid = require("uuidv4");
 

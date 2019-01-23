@@ -22,7 +22,7 @@ class Login extends Component {
   handleFormSubmit = e => {
     // Form submission logic
     e.preventDefault();
-    let userData = this.state.user;
+    const userData = this.state.user;
     let path = `/wall`;
     this.props.history.push(path);
   };

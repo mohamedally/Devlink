@@ -7,6 +7,7 @@ import { withRouter } from "react-router-dom";
 // import TextArea from '../components/TextArea';
 import Select from "../../components/Select";
 import Button from "../../components/Button";
+import ImageUpload from "../../components/ImageUpload";
 
 class SignUp extends Component {
   constructor(props) {
@@ -29,12 +30,10 @@ class SignUp extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  /* This life cycle hook gets executed when the component mounts */
-
   handleFormSubmit = e => {
     // Form submission logic
     e.preventDefault();
-    let userData = this.state.newUser;
+    const userData = this.state.newUser;
     let path = `/wall`;
     this.props.history.push(path);
   };
@@ -119,6 +118,9 @@ class SignUp extends Component {
           placeholder="Bio"
           onChange={e => this.handleInput(e)}
         />
+        <div>
+          <ImageUpload />
+        </div>
         {/* About you */}
         <Button title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
         {/*Submit */}

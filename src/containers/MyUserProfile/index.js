@@ -29,30 +29,36 @@ class MyUserProfile extends React.Component {
         {/* to={`/user/${id}`} */}
         <Container>
           <h1>Jordan Lawanson</h1>
-          <Title>Email:</Title>
+          <Title>Email: {" "}
+            <br></br> <br></br>
+          </Title>
           <Title>
             Github: {" "}
-            <a href="githublink" style={{color: 'purple'}}>
+            <br></br> <br></br>
+            <a href="https://github.com/jlawanson" style={{color: 'purple', fontWeight: 'normal'}}>
               https://github.com/jlawanson
             </a>
           </Title>
-          <div>Cambridge, MA</div>
-          <p></p>
+          <Title>
+            Location: {" "}
+            <br></br> <br></br>
+            <div style={{fontWeight: 'normal'}}>Cambridge, MA</div>
+          </Title>
           <Title>Skills:</Title>
           <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>
             <li>Developing</li>
             <li>Programming</li>
           </ul>
-          <p></p>
+          <br></br>
           <div>This is all you need to know about me</div>
           <p></p>
           <Title2>Projects:</Title2>
           <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>
             <li>
-              <MyProjectPost />
+              <MyProjectPost/>
             </li>
             <li>
-              <MyProjectPost />
+              <MyProjectPost/>
             </li>
           </ul>
           <div>

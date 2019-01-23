@@ -55,85 +55,85 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
-        <p></p>
-        <input
-          className="form-input"
-          type="text"
-          name="name"
-          value={this.state.newUser.name}
-          placeholder="Name"
-          onChange={e => this.handleInput(e)}
-        />{" "}
-        {/* Name of the user */}
-        <p></p>
-        <input
-          className="form-input"
-          type="text"
-          name="email"
-          value={this.state.newUser.email}
-          placeholder="E-mail"
-          onChange={e => this.handleInput(e)}
-        />{" "}
-        {/* email of the user */}
-        <p></p>
-        <input
-          className="form-input"
-          name="password"
-          type="text"
-          value={this.state.newUser.password}
-          placeholder="Password"
-          onChange={e => this.handleInput(e)}
-        />{" "}
-        {/* password of the user */}
-        <p></p>
-        <input
-          className="form-input"
-          type="text"
-          name="github"
-          value={this.state.newUser.github}
-          placeholder="Your Github Link"
-          onChange={e => this.handleInput(e)}
-        />{" "}
-        {/* Github of the user */}
-        <p></p>
-        <input
-          className="form-input"
-          type="text"
-          name="zipcode"
-          value={this.state.newUser.zipcode}
-          placeholder="Zipcode"
-          onChange={e => this.handleInput(e)}
-        />{" "}
-        {/* Zipcode of the user */}
-        <p></p>
-        <Select
-          name={"skills"}
-          options={this.state.skillOptions}
-          multiple={true}
-          value={this.state.newUser.skills}
-          placeholder={"Select Skills"}
-          handleChange={e => this.handleInput(e)}
-        />{" "}
-        {/* List of Skills (eg. Programmer, developer) */}
-        <p></p>
-        <textarea
-          className="form-input"
-          name="bio"
-          type="text"
-          value={this.state.newUser.bio}
-          placeholder="Bio"
-          onChange={e => this.handleInput(e)}
-        />
-        <div>
-          <ImageUpload />
+        <div style={{textAlign: "center"}}>
+            <p></p>
+            <input
+            className="form-input"
+            type="text"
+            name="name"
+            value={this.state.newUser.name}
+            placeholder="Name"
+            onChange={e => this.handleInput(e)}
+            />{" "}
+            {/* Name of the user */}
+            <p></p>
+            <input
+            className="form-input"
+            type="text"
+            name="email"
+            value={this.state.newUser.email}
+            placeholder="E-mail"
+            onChange={e => this.handleInput(e)}
+            />{" "}
+            {/* email of the user */}
+            <p></p>
+            <input
+            className="form-input"
+            name="password"
+            type="text"
+            value={this.state.newUser.password}
+            placeholder="Password"
+            onChange={e => this.handleInput(e)}
+            />{" "}
+            {/* password of the user */}
+            <p></p>
+            <input
+            className="form-input"
+            type="text"
+            name="github"
+            value={this.state.newUser.github}
+            placeholder="Your Github Link"
+            onChange={e => this.handleInput(e)}
+            />{" "}
+            {/* Github of the user */}
+            <p></p>
+            <input
+            className="form-input"
+            type="text"
+            name="zipcode"
+            value={this.state.newUser.zipcode}
+            placeholder="Zipcode"
+            onChange={e => this.handleInput(e)}
+            />{" "}
+            {/* Zipcode of the user */}
+            <p></p>
+            <Select
+            name={"skills"}
+            options={this.state.skillOptions}
+            multiple={true}
+            value={this.state.newUser.skills}
+            placeholder={"Select Skills"}
+            handleChange={e => this.handleInput(e)}
+            />{" "}
+            {/* List of Skills (eg. Programmer, developer) */}
+            <p></p>
+            <textarea
+            className="form-input"
+            name="bio"
+            type="text"
+            value={this.state.newUser.bio}
+            placeholder="Bio"
+            onChange={e => this.handleInput(e)}
+            />
+            <div>
+            <ImageUpload />
+            </div>
+            {/* About you */}
+            <p></p>
+            <Button title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
+            {/*Submit */}
+            <p></p>
         </div>
-        {/* About you */}
-        <p></p>
-        <Button title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
-        {/*Submit */}
-        <p></p>
-      </div>
     );
   }
 }

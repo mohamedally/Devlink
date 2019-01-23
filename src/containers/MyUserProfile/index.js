@@ -84,7 +84,7 @@ class MyUserProfile extends React.Component {
               <MyProjectPost />
             </li>
           </ul>
-          <div>
+          <div style={{textAlign: "center"}}>
             <Button title="Edit Profile" action={e => this.handleEdit(e)} />
             {this.state.showEditComponent ? <SignUp /> : null}
           </div>

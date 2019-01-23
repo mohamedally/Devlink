@@ -2,6 +2,7 @@ import React from "react";
 import ProjectPost from "../projectPost";
 import Button from "../../components/Button";
 import AddPost from "../AddPost";
+import { StyledLink } from "../../components/Navbar/styles";
 const uuid = require("uuidv4");
 
 // import ReactDOM from "react-dom";
@@ -42,7 +43,7 @@ class Wall extends React.Component {
     // Form submission logic
     const newPost = {
       projecttitle: this.state.projectTitle,
-      username: "Jordan Lawanson",
+      username: "Yooni Park",
       projectdescription: this.state.projectDescription
     };
     // console.log(newPost);
@@ -76,7 +77,9 @@ class Wall extends React.Component {
             <h2>{post.projecttitle}</h2>
           </div>
           <div>
-            <h3>{post.username}</h3>
+            <StyledLink to="/user">
+              <h3>{post.username}</h3>
+            </StyledLink>
           </div>
           <div>{post.projectdescription}</div>
           <Button title="Request to Join" action={e => this.handleRequest(e)} />

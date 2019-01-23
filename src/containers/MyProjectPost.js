@@ -1,7 +1,6 @@
 import React from "react";
 import ProjectPost from "./projectPost";
 import Button from "../components/Button";
-import { Container } from "./MyUserProfile/styles";
 import Wall from "./Wall";
 import { Container, Title3 } from "./MyUserProfile/styles";
 const uuid = require("uuidv4");
@@ -16,6 +15,7 @@ class MyProjectPost extends React.Component {
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAccept = this.handleAccept.bind(this);
+    this.handleRequest = this.handleRequest.bind(this);
   }
 
   handleDelete = async id => {
@@ -40,6 +40,15 @@ class MyProjectPost extends React.Component {
       accepted: [...this.state.accepted, acceptName]
     });
     console.log(this.state.accepted);
+  };
+
+  handleRequest = async e => {
+    const newCollaborators = { name: "Jordan Lawanson", id: uuid() };
+    await this.setState({
+      collaborators: [...this.state.collaborators, newCollaborators]
+    });
+
+    console.log(this.state.collaborators);
   };
 
   render() {

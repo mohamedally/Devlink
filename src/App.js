@@ -12,6 +12,7 @@ import Wall from "./containers/Wall/";
 import MyUserProfile from "./containers/MyUserProfile/";
 import Navbar from "./components/Navbar";
 import { StyledH3 } from "./styles";
+import User from "./containers/User";
 
 class App extends Component {
   render() {
@@ -19,12 +20,13 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <div className="App">
-          <StyledH3>devLink</StyledH3>
-            <Navbar/>
+            <StyledH3>devLink</StyledH3>
+            <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/wall" component={Wall} />
               <Route path="/profile" component={MyUserProfile} />
+              <Route path="/user" component={User} />
               {/* <Redirect to="/" /> */}
             </Switch>
           </div>

@@ -29,37 +29,58 @@ class MyUserProfile extends React.Component {
         {/* to={`/user/${id}`} */}
         <Container>
           <Name>Jordan Lawanson</Name>
-          <p></p>
-          <Title>Email: {" "}
-            <br></br> <br></br>
+          <p />
+          <Title>
+            Email: {" jordan@me.com "}
+            <br /> <br />
           </Title>
           <Title>
-            Github: {" "}
-            <br></br> <br></br>
-            <a href="https://github.com/jlawanson" style={{color: 'purple', fontWeight: 'normal'}}>
+            Github: <br /> <br />
+            <a
+              href="https://github.com/jlawanson"
+              style={{ color: "purple", fontWeight: "normal" }}
+            >
               https://github.com/jlawanson
             </a>
           </Title>
           <Title>
-            Location: {" "}
-            <br></br> <br></br>
-            <div style={{fontWeight: 'normal'}}>Cambridge, MA</div>
+            Location: <br /> <br />
+            <div style={{ fontWeight: "normal" }}>Cambridge, MA</div>
           </Title>
           <Title>Skills:</Title>
-          <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: "0px",
+              padding: "0px",
+              textAlign: "center"
+            }}
+          >
             <li>Developing</li>
             <li>Programming</li>
           </ul>
-          <br></br>
-          <div>This is all you need to know about me</div>
-          <p></p>
+          <br />
+          <Title>
+            Bio: <br /> <br />
+            <div style={{ fontWeight: "normal" }}>
+              This is all you need to know about me
+            </div>
+          </Title>
+          <p />
           <Title2>Projects:</Title2>
-          <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: "0px",
+              padding: "0px",
+              textAlign: "center"
+            }}
+          >
             <li>
-              <MyProjectPost/>
+              <MyProjectPost />
             </li>
             <li>
-              <MyProjectPost/>
+              <MyProjectPost />
             </li>
           </ul>
           <div>

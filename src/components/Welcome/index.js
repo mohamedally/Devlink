@@ -3,7 +3,7 @@ import { Container, Text } from "./styles";
 
 const Welcome = () => (
   <Container>
-    <Text>Welcome to DevLink!</Text>
+    <Text>Welcome to devLink!</Text>
   </Container>
 );
 

@@ -3,25 +3,13 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import React from "react";
 import MyUserProfile from "../../containers/MyUserProfile";
 import Wall from "../../containers/Wall";
+import { Container, StyledLink } from "./styles";
 
-class Navbar extends React.Component {
-  render() {
-    return (
-      <div>
-        <nav>
-          <div>
-            <Link to="/profile">My Profile</Link>
-          </div>
-          <div>
-            <Link to="/wall">Wall</Link>
-          </div>
-          <div>
-            <Link to="/">Logout</Link>
-          </div>
-        </nav>
-      </div>
-    );
-  }
-}
+const Navbar = () => (
+  <Container>
+    <StyledLink to="/profile">My Profile</StyledLink>
+    <StyledLink to="/wall">Wall</StyledLink>
+  </Container>
+);
 
 export default Navbar;

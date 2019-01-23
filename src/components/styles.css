@@ -4,6 +4,11 @@
     background-color: white;
     border: 2px solid purple;
     font-size: 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
   }
   
   .my-button:hover {

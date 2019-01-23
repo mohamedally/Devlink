@@ -11,9 +11,9 @@ export const Container = styled(Flex)`
   align-items: center; 
   justify-content: center; 
   text-justify: center;
-  background-color: lightcoral;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
+  background-color: lightcoral;
 `
 
 export const Title = styled(Flex)`

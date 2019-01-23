@@ -43,10 +43,6 @@ class MyUserProfile extends React.Component {
             <li>Programming</li>
           </ul>
           <div>This is all you need to know about me</div>
-          <div>
-            <Button title="Edit Profile" action={e => this.handleEdit(e)} />
-            {this.state.showEditComponent ? <SignUp /> : null}
-          </div>
           <div>Projects:</div>
           <ul>
             <li>
@@ -56,6 +52,10 @@ class MyUserProfile extends React.Component {
               <MyProjectPost />
             </li>
           </ul>
+          <div>
+            <Button title="Edit Profile" action={e => this.handleEdit(e)} />
+            {this.state.showEditComponent ? <SignUp /> : null}
+          </div>
         </Container>
       </div>
     );

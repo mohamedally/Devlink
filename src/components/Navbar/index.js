@@ -9,6 +9,7 @@ const Navbar = () => (
   <Container>
     <StyledLink to="/profile">My Profile</StyledLink>
     <StyledLink to="/wall">Wall</StyledLink>
+    <StyledLink to="/">Log Out</StyledLink>
   </Container>
 );
 

@@ -37,12 +37,16 @@ class Home extends Component {
         <Welcome />
         <Container>
           <div>
+            <p></p>
             <Button title="Login" action={e => this.handleLogin(e)}/>
             {this.state.showLogInComponent ? <Login /> : null}
+            <p></p>
           </div>
           <div>
+            <p></p>
             <Button title="Sign Up" action={e => this.handleSignUp(e)} />
             {this.state.showSignUpComponent ? <SignUp /> : null}
+            <p></p>
           </div>
         </Container>
       </React.Fragment>

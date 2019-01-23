@@ -11,6 +11,7 @@ import Home from "./containers/Home/";
 import Wall from "./containers/Wall/";
 import MyUserProfile from "./containers/MyUserProfile/";
 import Navbar from "./components/Navbar";
+import { StyledH3 } from "./styles";
 
 class App extends Component {
   render() {
@@ -18,8 +19,8 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <div className="App">
-            <h3>devLink</h3>
-            <Navbar />
+          <StyledH3>devLink</StyledH3>
+            <Navbar/>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/wall" component={Wall} />

@@ -16,6 +16,11 @@ export const Container = styled(Flex)`
 
 export const StyledLink = styled(Link)`
   font-size: 1.5rem;
+  text-decoration: none;
+  :hover {
+      text-decoration: none;
+      color: ${({ theme }) => theme.colors.devLogo};
+  }
   color: solid palevioletred;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};

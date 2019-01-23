@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Flex } from "grid-styled";
-import { Link } from "react-router-dom";
 
 export const Container = styled(Flex)`
   display: flex;
@@ -11,7 +10,26 @@ export const Container = styled(Flex)`
   padding: 5px;
   align-items: center; 
   justify-content: center; 
-  background-color: lightcoral;
+  text-justify: center;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
+  background-color: lightcoral;
+`
+
+export const Title = styled(Flex)`
+  font-weight: bolder;
+  justify-content: center;
+`
+export const Title2 = styled(Flex)`
+  font-weight: bolder;
+  font-size: 1.75rem; 
+`
+export const Title3 = styled(Flex)`
+  font-weight: bolder;
+  font-size: 1.25rem; 
+`
+export const Name = styled(Flex)`
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 2.5rem;
 `;

@@ -3,6 +3,7 @@ import ProjectPost from "./projectPost";
 import Button from "../components/Button";
 import { Container } from "./MyUserProfile/styles";
 import Wall from "./Wall";
+import { Container, Title3 } from "./MyUserProfile/styles";
 const uuid = require("uuidv4");
 
 class MyProjectPost extends React.Component {
@@ -70,19 +71,39 @@ class MyProjectPost extends React.Component {
       <div>
         {/* to={`/project/${id}}` */}
         <Container>
-          <h2>Project #1</h2>
+          <Title3>Project #1</Title3>
           <div>
             This is all you need to know about the project. ui gfhEJOWLF
             EWOIFHEWUKfn iharuebeih reuahfelajbkuwri. ewiufgefj.
           </div>
           <Button title="Request to Join" action={e => this.handleRequest(e)} />
-          <div>
+          <div style={{ fontWeight: "bold" }}>
             Requested collaborators:
-            <ul>{collaborators}</ul>
+            <ul
+              style={{
+                fontWeight: "normal",
+                listStyle: "none",
+                margin: "0px",
+                padding: "0px",
+                textAlign: "center"
+              }}
+            >
+              {collaborators}
+            </ul>
           </div>
-          <div>
+          <div style={{ fontWeight: "bold" }}>
             Accepted collaborators:
-            <ul>{accepted}</ul>
+            <ul
+              style={{
+                fontWeight: "normal",
+                listStyle: "none",
+                margin: "0px",
+                padding: "0px",
+                textAlign: "center"
+              }}
+            >
+              {accepted}
+            </ul>
           </div>
         </Container>
       </div>

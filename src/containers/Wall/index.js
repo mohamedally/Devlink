@@ -2,11 +2,8 @@ import React from "react";
 import ProjectPost from "../projectPost";
 import Button from "../../components/Button";
 import AddPost from "../AddPost";
-<<<<<<< HEAD
-import { Container, Title, Name, People, ThreadTitle } from "./styles";
-=======
 import { StyledLink } from "../../components/Navbar/styles";
->>>>>>> 2b87debadf431993416a965efec08341d2660c3f
+import { Container, Title, Name, People, ThreadTitle } from "./styles";
 const uuid = require("uuidv4");
 
 // import ReactDOM from "react-dom";
@@ -81,13 +78,9 @@ class Wall extends React.Component {
             <Title>{post.projecttitle}</Title>
           </div>
           <div>
-<<<<<<< HEAD
-            <Name>Creator: {post.username}</Name>
-=======
             <StyledLink to="/user">
-              <h3>{post.username}</h3>
+              <Name>Creator: {post.username}</Name>
             </StyledLink>
->>>>>>> 2b87debadf431993416a965efec08341d2660c3f
           </div>
           <div>{post.projectdescription}</div>
           <Button title="Request to Join" action={e => this.handleRequest(e)} />

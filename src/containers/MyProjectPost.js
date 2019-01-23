@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectPost from "./projectPost";
-import Button from "../components/Button";
+import Button2 from "../components/Button2";
 import Wall from "./Wall";
 import { Container, Title3 } from "./MyUserProfile/styles";
 const uuid = require("uuidv4");
@@ -56,11 +56,11 @@ class MyProjectPost extends React.Component {
       return (
         <div key={uuid()}>
           <li>{collaborator.name}</li>
-          <Button
+          <Button2
             title="Accept"
             action={() => this.handleAccept(collaborator.id)}
           />
-          <Button
+          <Button2
             title="Delete"
             action={() => this.handleDelete(collaborator.id)}
           />
@@ -85,7 +85,7 @@ class MyProjectPost extends React.Component {
             This is all you need to know about the project. ui gfhEJOWLF
             EWOIFHEWUKfn iharuebeih reuahfelajbkuwri. ewiufgefj.
           </div>
-          <Button title="Request to Join" action={e => this.handleRequest(e)} />
+          <Button2 title="Request to Join" action={e => this.handleRequest(e)} />
           <div style={{ fontWeight: "bold" }}>
             Requested collaborators:
             <ul

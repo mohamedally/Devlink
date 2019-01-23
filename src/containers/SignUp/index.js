@@ -56,6 +56,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
+        <p></p>
         <input
           className="form-input"
           type="text"
@@ -65,6 +66,7 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* Name of the user */}
+        <p></p>
         <input
           className="form-input"
           type="text"
@@ -74,6 +76,7 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* email of the user */}
+        <p></p>
         <input
           className="form-input"
           name="password"
@@ -83,6 +86,7 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* password of the user */}
+        <p></p>
         <input
           className="form-input"
           type="text"
@@ -92,6 +96,7 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* Github of the user */}
+        <p></p>
         <input
           className="form-input"
           type="text"
@@ -101,6 +106,7 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* Zipcode of the user */}
+        <p></p>
         <Select
           name={"skills"}
           options={this.state.skillOptions}
@@ -110,6 +116,7 @@ class SignUp extends Component {
           handleChange={e => this.handleInput(e)}
         />{" "}
         {/* List of Skills (eg. Programmer, developer) */}
+        <p></p>
         <textarea
           className="form-input"
           name="bio"
@@ -122,8 +129,10 @@ class SignUp extends Component {
           <ImageUpload />
         </div>
         {/* About you */}
+        <p></p>
         <Button title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
         {/*Submit */}
+        <p></p>
       </div>
     );
   }

@@ -2,9 +2,10 @@ import React from "react";
 import ProjectPost from "./projectPost";
 import Button from "../components/Button";
 import { Container } from "./MyUserProfile/styles";
+import Wall from "./Wall";
 const uuid = require("uuidv4");
 
-class MyProjectPost extends ProjectPost {
+class MyProjectPost extends React.Component {
   constructor(props) {
     super(props);
 

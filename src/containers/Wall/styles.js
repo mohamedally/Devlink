@@ -30,6 +30,7 @@ export const Name = styled(Flex)`
 export const People = styled(Flex)`
   font-weight: bolder;
   font-size: 1.5rem;
+  justify-content: center;
 `
 
 export const ThreadTitle = styled(Flex)`

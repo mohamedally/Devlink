@@ -83,7 +83,9 @@ class Wall extends React.Component {
             </StyledLink>
           </div>
           <div>{post.projectdescription}</div>
+          <p></p>
           <Button title="Request to Join" action={e => this.handleRequest(e)} />
+          <p></p>
           <div>
             <People>Requested collaborators:</People>
             <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>{collaborators}</ul>
@@ -119,6 +121,7 @@ class Wall extends React.Component {
             onChange={e => this.handleInput(e)
             }
           />{" "}
+          <p></p>
           <Button title="Add Post" action={e => this.handleFormSubmit(e)} />{" "}
           {/*Submit */}
           <p></p>

@@ -2,6 +2,7 @@ import React from "react";
 import ProjectPost from "../projectPost";
 import Button from "../../components/Button";
 import AddPost from "../AddPost";
+import { Container, Title, Name, People, ThreadTitle } from "./styles";
 const uuid = require("uuidv4");
 
 // import ReactDOM from "react-dom";
@@ -73,16 +74,16 @@ class Wall extends React.Component {
       return (
         <li key={uuid()}>
           <div>
-            <h2>{post.projecttitle}</h2>
+            <Title>{post.projecttitle}</Title>
           </div>
           <div>
-            <h3>{post.username}</h3>
+            <Name>Creator: {post.username}</Name>
           </div>
           <div>{post.projectdescription}</div>
           <Button title="Request to Join" action={e => this.handleRequest(e)} />
           <div>
-            <h4>Requested collaborators:</h4>
-            <ul>{collaborators}</ul>
+            <People>Requested collaborators:</People>
+            <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>{collaborators}</ul>
           </div>
         </li>
       );
@@ -93,25 +94,35 @@ class Wall extends React.Component {
       <React.Fragment>
         {/* <Button title="Add Post" action={e => this.handleFormSubmit(e)} /> */}
         {/* {this.state.showAddComponent ? <AddPost /> : null} */}
-        <input
-          className="form-input"
-          name="projectTitle"
-          type="text"
-          value={this.state.projectTitle}
-          placeholder="Project Title"
-          onChange={e => this.handleInput(e)}
-        />
-        <textarea
-          className="form-input"
-          type="text"
-          name="projectDescription"
-          value={this.state.projectDescription}
-          placeholder="Project Description"
-          onChange={e => this.handleInput(e)}
-        />{" "}
-        <Button title="Add Post" action={e => this.handleFormSubmit(e)} />{" "}
-        {/*Submit */}
-        <ul>{posts}</ul>
+        <Container>
+          <ThreadTitle>Post Project</ThreadTitle>
+          <p></p>
+          <input
+            className="form-input"
+            name="projectTitle"
+            type="text"
+            value={this.state.projectTitle}
+            placeholder="Project Title"
+            onChange={e => this.handleInput(e)}
+          />
+          <p></p>
+          <textarea
+            className="form-input"
+            type="text"
+            name="projectDescription"
+            rows="10" cols="50"
+            value={this.state.projectDescription}
+            placeholder="Project Description"
+            onChange={e => this.handleInput(e)
+            }
+          />{" "}
+          <Button title="Add Post" action={e => this.handleFormSubmit(e)} />{" "}
+          {/*Submit */}
+          <p></p>
+          <ThreadTitle>Project Thread:</ThreadTitle>
+          <p></p>
+          <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>{posts}</ul>
+        </Container>
         {/* <ProjectPost />
         <ProjectPost />
         <ProjectPost /> */}

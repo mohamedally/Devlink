@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Title, Title2 } from "./styles";
+import { Container, Title, Title2, Name } from "./styles";
 import MyProjectPost from "../MyProjectPost";
 import Button from "../../components/Button";
 import SignUp from "../SignUp";
@@ -28,7 +28,8 @@ class MyUserProfile extends React.Component {
       <div>
         {/* to={`/user/${id}`} */}
         <Container>
-          <h1>Jordan Lawanson</h1>
+          <Name>Jordan Lawanson</Name>
+          <p></p>
           <Title>Email: {" "}
             <br></br> <br></br>
           </Title>

@@ -39,14 +39,15 @@ class MyUserProfile extends React.Component {
           <div>Cambridge, MA</div>
           <p></p>
           <Title>Skills:</Title>
-          <ul style={{listStyle: 'none'}}>
+          <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>
             <li>Developing</li>
             <li>Programming</li>
           </ul>
+          <p></p>
           <div>This is all you need to know about me</div>
           <p></p>
           <Title2>Projects:</Title2>
-          <ul style={{listStyle: 'none'}}>
+          <ul style={{listStyle: 'none', margin: '0px', padding: '0px', textAlign: 'center'}}>
             <li>
               <MyProjectPost />
             </li>

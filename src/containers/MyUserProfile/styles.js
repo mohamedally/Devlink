@@ -10,6 +10,7 @@ export const Container = styled(Flex)`
   padding: 5px;
   align-items: center; 
   justify-content: center; 
+  text-justify: center;
   background-color: lightcoral;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
@@ -17,6 +18,7 @@ export const Container = styled(Flex)`
 
 export const Title = styled(Flex)`
   font-weight: bolder;
+  justify-content: center;
 `
 export const Title2 = styled(Flex)`
   font-weight: bolder;

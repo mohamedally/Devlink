@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Title } from "./styles";
+import { Container, Title, Title2 } from "./styles";
 import MyProjectPost from "../MyProjectPost";
 import Button from "../../components/Button";
 import SignUp from "../SignUp";
@@ -32,19 +32,21 @@ class MyUserProfile extends React.Component {
           <div>Email: jordan@me.com</div>
           <div>
             Github:{" "}
-            <a href="https://github.com/jlawanson">
+            <a href="githublink" style={{color: 'purple'}}>
               https://github.com/jlawanson
             </a>
           </div>
           <div>Cambridge, MA</div>
+          <p></p>
           <Title>Skills:</Title>
-          <ul style={{listStyle: 'none', marginLeft: '0'}}>
+          <ul style={{listStyle: 'none'}}>
             <li>Developing</li>
             <li>Programming</li>
           </ul>
           <div>This is all you need to know about me</div>
-          <div>Projects:</div>
-          <ul style={{listStyle: 'none', marginLeft: '0'}}>
+          <p></p>
+          <Title2>Projects:</Title2>
+          <ul style={{listStyle: 'none'}}>
             <li>
               <MyProjectPost />
             </li>

@@ -1,7 +1,7 @@
 import React from "react";
 import ProjectPost from "./projectPost";
 import Button from "../components/Button";
-import { Container } from "./MyUserProfile/styles";
+import { Container, Title } from "./MyUserProfile/styles";
 const uuid = require("uuidv4");
 
 class MyProjectPost extends ProjectPost {
@@ -69,7 +69,7 @@ class MyProjectPost extends ProjectPost {
       <div>
         {/* to={`/project/${id}}` */}
         <Container>
-          <h2>Project #1</h2>
+          <Title>Project #1</Title>
           <div>
             This is all you need to know about the project. ui gfhEJOWLF
             EWOIFHEWUKfn iharuebeih reuahfelajbkuwri. ewiufgefj.

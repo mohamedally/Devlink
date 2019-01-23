@@ -17,4 +17,8 @@ export const Container = styled(Flex)`
 
 export const Title = styled(Flex)`
   font-weight: bolder;
+`
+export const Title2 = styled(Flex)`
+  font-weight: bolder;
+  font-size: 1.5rem; 
 `;

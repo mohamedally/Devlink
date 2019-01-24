@@ -1,29 +1,26 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-
-/* Import Components */
-// import CheckBox from '../components/CheckBox';
-// import Input from '../components/Input';
-// import TextArea from '../components/TextArea';
 import Select from "../../components/Select";
-import Button from "../../components/Button";
 import ImageUpload from "../../components/ImageUpload";
 import Button2 from "../../components/Button2";
+// import { StateProvider } from "react-state-provider";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
 
+    // this.newUsersState = StateProvider.getState("newUsers");
+
     this.state = {
-      newUser: {
-        name: "",
-        email: "",
-        github: "",
-        zipcode: "",
-        password: "",
-        skills: "",
-        bio: ""
-      },
+      name: "",
+      email: "",
+      github: "",
+      zipcode: "",
+      password: "",
+      skills: "",
+      bio: "",
+
+      newUsers: [],
 
       skillOptions: ["Programming", "Development", "Design", "Testing"]
     };
@@ -31,25 +28,40 @@ class SignUp extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  handleFormSubmit = e => {
+  // componentDidMount() {
+  //   this.newUsersState.observe("name");
+  // }
+
+  handleFormSubmit = async e => {
     // Form submission logic
     e.preventDefault();
-    const userData = this.state.newUser;
+    const userData = this.state.newUsers;
+
+    const newUser = {
+      name: this.state.name,
+      email: this.state.email,
+      github: this.state.github,
+      zipcode: this.state.zipcode,
+      password: this.state.password,
+      skills: this.state.skills,
+      bio: this.state.bio
+    };
+
+    await this.setState({
+      newUsers: newUser
+    });
     let path = `/wall`;
     this.props.history.push(path);
+
+    console.log(this.state.newUsers);
   };
 
   handleInput = e => {
     let value = e.target.value;
     let name = e.target.name;
-    this.setState(prevState => {
-      return {
-        newUser: {
-          ...prevState.newUser,
-          [name]: value
-        }
-      };
-    });
+    // console.log("Value", value);
+    // console.log("Name", name);
+    this.setState({ [name]: value });
   };
 
   //   handlePassword = e => {};
@@ -62,7 +74,7 @@ class SignUp extends Component {
           className="form-input"
           type="text"
           name="name"
-          value={this.state.newUser.name}
+          value={this.state.name}
           placeholder="Name"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -72,7 +84,7 @@ class SignUp extends Component {
           className="form-input"
           type="text"
           name="email"
-          value={this.state.newUser.email}
+          value={this.state.email}
           placeholder="E-mail"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -82,7 +94,7 @@ class SignUp extends Component {
           className="form-input"
           name="password"
           type="text"
-          value={this.state.newUser.password}
+          value={this.state.password}
           placeholder="Password"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -92,7 +104,7 @@ class SignUp extends Component {
           className="form-input"
           type="text"
           name="github"
-          value={this.state.newUser.github}
+          value={this.state.github}
           placeholder="Your Github Link"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -102,7 +114,7 @@ class SignUp extends Component {
           className="form-input"
           type="text"
           name="zipcode"
-          value={this.state.newUser.zipcode}
+          value={this.state.zipcode}
           placeholder="Zipcode"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -112,7 +124,7 @@ class SignUp extends Component {
           name={"skills"}
           options={this.state.skillOptions}
           multiple={true}
-          value={this.state.newUser.skills}
+          value={this.state.skills}
           placeholder={"Select Skills"}
           handleChange={e => this.handleInput(e)}
         />{" "}
@@ -122,7 +134,7 @@ class SignUp extends Component {
           className="form-input"
           name="bio"
           type="text"
-          value={this.state.newUser.bio}
+          value={this.state.bio}
           placeholder="Bio"
           onChange={e => this.handleInput(e)}
         />

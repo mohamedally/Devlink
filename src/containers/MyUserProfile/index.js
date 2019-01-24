@@ -1,20 +1,30 @@
 import React from "react";
 import { Container, Title, Title2, Name } from "./styles";
 import MyProjectPost from "../MyProjectPost";
-import Button from "../../components/Button";
 import SignUp from "../SignUp";
+import Button2 from "../../components/Button2";
+import { StateProvider } from "react-state-provider";
+
 // import SignUp from "../SignUp";
 // import ReactDOM from "react-dom";
 
 class MyUserProfile extends React.Component {
   constructor(props) {
     super(props);
+
+    // this.newUsersState = StateProvider.getState("newUsers");
+
     this.state = {
       showEditComponent: false
+      // name: this.newUsersState.get("name")
     };
 
     this.handleEdit = this.handleEdit.bind(this);
   }
+
+  // componentDidMount() {
+  //   this.newUsersState.observe("name");
+  // }
 
   handleEdit = e => {
     e.preventDefault();
@@ -67,6 +77,10 @@ class MyUserProfile extends React.Component {
               This is all you need to know about me
             </div>
           </Title>
+          <div style={{ textAlign: "center" }}>
+            <Button2 title="Edit Profile" action={e => this.handleEdit(e)} />
+            {this.state.showEditComponent ? <SignUp /> : null}
+          </div>
           <p />
           <Title2>Projects:</Title2>
           <ul
@@ -84,10 +98,6 @@ class MyUserProfile extends React.Component {
               <MyProjectPost />
             </li>
           </ul>
-          <div style={{textAlign: "center"}}>
-            <Button title="Edit Profile" action={e => this.handleEdit(e)} />
-            {this.state.showEditComponent ? <SignUp /> : null}
-          </div>
         </Container>
       </div>
     );

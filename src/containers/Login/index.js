@@ -1,45 +1,57 @@
+<<<<<<< HEAD
+import React, { Component } from "react"
+import Button from "../../components/Button"
+import { withRouter } from "react-router-dom"
+import Button2 from "../../components/Button2"
+=======
 import React, { Component } from "react";
-import Button from "../../components/Button";
 import { withRouter } from "react-router-dom";
 import Button2 from "../../components/Button2";
+>>>>>>> 03e2595a6194e5b6d85d14a1787e555e36ae36b1
 
 class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      user: {
-        email: "",
-        password: ""
-      }
-    };
+      email: "",
+      password: "",
+      user: {}
+    }
 
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
   /* This life cycle hook gets executed when the component mounts */
 
-  handleFormSubmit = e => {
+  handleFormSubmit = async e => {
     // Form submission logic
+<<<<<<< HEAD
+    e.preventDefault()
+    const userData = this.state.user
+=======
     e.preventDefault();
-    const userData = this.state.user;
-    let path = `/wall`;
-    this.props.history.push(path);
-  };
+>>>>>>> 03e2595a6194e5b6d85d14a1787e555e36ae36b1
+
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    await this.setState({
+      user: user
+    })
+
+    let path = `/wall`
+    this.props.history.push(path)
+  }
 
   handleInput = e => {
-    let value = e.target.value;
-    let name = e.target.name;
-    this.setState(prevState => {
-      return {
-        user: {
-          ...prevState.user,
-          [name]: value
-        }
-      };
-    });
-  };
+    let value = e.target.value
+    let name = e.target.name
+    this.setState({ [name]: value })
+  }
 
   //   handlePassword = e => {};
 
@@ -51,7 +63,7 @@ class Login extends Component {
           className="form-input"
           type="text"
           name="email"
-          value={this.state.user.email}
+          value={this.state.email}
           placeholder="E-mail"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -61,7 +73,7 @@ class Login extends Component {
           className="form-input"
           name="password"
           type="text"
-          value={this.state.user.password}
+          value={this.state.password}
           placeholder="Password"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -71,8 +83,8 @@ class Login extends Component {
         {/*Submit */}
         <p />
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(Login);
+export default withRouter(Login)

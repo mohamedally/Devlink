@@ -3,7 +3,6 @@ import { Container, Title, Title2, Name } from "./styles";
 import MyProjectPost from "../MyProjectPost";
 import SignUp from "../SignUp";
 import Button2 from "../../components/Button2";
-import { StateProvider } from "react-state-provider";
 
 // import SignUp from "../SignUp";
 // import ReactDOM from "react-dom";
@@ -34,7 +33,6 @@ class MyUserProfile extends React.Component {
   };
 
   render() {
-    console.log("MyUserProfile", this.props);
     return (
       <div>
         {/* to={`/user/${id}`} */}

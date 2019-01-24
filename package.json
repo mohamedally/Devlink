@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apollo-boost": "^0.1.22",
+    "apollo-boost": "^0.1.27",
     "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
     "grid-styled": "^5.0.2",
+<<<<<<< HEAD
     "react": "^16.7.0",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.7.0",
+=======
+    "react": "^16.6.3",
+    "react-apollo": "^2.4.0",
+    "react-dom": "^16.6.3",
+>>>>>>> 588029a682b1da221684cc918efe1d6ab4d5f7bc
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.3",

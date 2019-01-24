@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
 import Button2 from "../../components/Button2"
@@ -26,11 +25,6 @@ const LOGIN_USER = gql`
     }
   }
 `
-=======
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import Button2 from "../../components/Button2";
->>>>>>> f108cb13c3616c00c49bd9ae447d11214d259cb3
 
 class Login extends Component {
   constructor(props) {
@@ -49,17 +43,11 @@ class Login extends Component {
 
   /* This life cycle hook gets executed when the component mounts */
 
-<<<<<<< HEAD
   loginComplete = async data => {
     if (data.loginUser.error) {
       await this.setState({
         error: data.loginUser.error.message
       })
-=======
-  handleFormSubmit = async e => {
-    // Form submission logic
-    e.preventDefault();
->>>>>>> f108cb13c3616c00c49bd9ae447d11214d259cb3
 
       return false
     }

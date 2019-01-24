@@ -1,37 +1,38 @@
 .my-button {
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
-    background-color: white;
-    border: 2px solid palevioletred;
-    font-size: 20px;
-    border-radius: 10px;
-    font-family: sans-serif;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: palevioletred;
-  }
-  
-  .my-button:hover {
-    background-color: palevioletred; 
-    color: white;
-  }
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: white;
+  border: 2px solid palevioletred;
+  font-size: 20px;
+  border-radius: 10px;
+  font-family: serif;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: purple;
+  padding: 0.3em;
+}
 
-  .my-button2 {
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
-    background-color: white;
-    border: 2px solid purple;
-    font-size: 12px;
-    border-radius: 10px;
-    font-family: sans-serif;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: purple;
-  }
-  
-  .my-button2:hover {
-    background-color: purple; 
-    color: white;
-  }
+.my-button:hover {
+  background-color: palevioletred;
+  color: white;
+}
+
+.my-button2 {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: white;
+  border: 2px solid purple;
+  font-size: 12px;
+  border-radius: 10px;
+  font-family: serif;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: purple;
+}
+
+.my-button2:hover {
+  background-color: purple;
+  color: white;
+}

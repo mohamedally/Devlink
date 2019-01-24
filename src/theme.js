@@ -1,22 +1,22 @@
-import WebFont from 'webfontloader'
+import WebFont from "webfontloader";
 
 WebFont.load({
   google: {
-    families: ['Source Sans Pro:400', 'sans-serif']
+    families: ["Source Sans Pro:400", "sans-serif"]
   }
-})
+});
 
 const theme = {
   colors: {
-    devLogo: '#FC6264',
-    mainBackground: '#FFF'
+    devLogo: "#FC6264",
+    mainBackground: "#FFF"
   },
   fonts: {
     primary: {
-      family: 'Source Sans Pro, sans-serif',
-      weight: 400
+      family: "Times New Roman, sans-serif",
+      weight: 50
     }
   }
-}
+};
 
-export default theme
+export default theme;

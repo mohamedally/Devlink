@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "../../components/Button";
 import { withRouter } from "react-router-dom";
+import Button2 from "../../components/Button2";
 
 class Login extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <p></p>
+        <p />
         <input
           className="form-input"
           type="text"
@@ -55,7 +56,7 @@ class Login extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* email of the user */}
-        <p></p>
+        <p />
         <input
           className="form-input"
           name="password"
@@ -65,10 +66,10 @@ class Login extends Component {
           onChange={e => this.handleInput(e)}
         />{" "}
         {/* password of the user */}
-        <p></p>
-        <Button title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
+        <p />
+        <Button2 title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
         {/*Submit */}
-        <p></p>
+        <p />
       </div>
     );
   }

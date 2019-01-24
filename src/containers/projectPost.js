@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "./MyUserProfile/styles";
+import { Container, Title3 } from "./MyUserProfile/styles";
 import Button from "../components/Button";
 const uuid = require("uuidv4");
 // import ReactDOM from "react-dom";
@@ -36,7 +36,8 @@ class ProjectPost extends React.Component {
       <div>
         {/* to={`/project/${id}}` */}
         <Container>
-          <h2>Project #1</h2>
+          <Title3>Project #1</Title3>
+          <p></p>
           <div>
             This is all you need to know about the project. ui gfhEJOWLF
             EWOIFHEWUKfn iharuebeih reuahfelajbkuwri. ewiufgefj.

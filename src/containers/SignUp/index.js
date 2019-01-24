@@ -136,6 +136,7 @@ class SignUp extends Component {
           placeholder="Bio"
           onChange={e => this.handleInput(e)}
         />
+        <p></p>
         <div>
           <ImageUpload />
         </div>

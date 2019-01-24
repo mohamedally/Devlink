@@ -79,14 +79,17 @@ class MyProjectPost extends React.Component {
         {/* to={`/project/${id}}` */}
         <Container>
           <Title3>Project #1</Title3>
+          <p></p>
           <div>
             This is all you need to know about the project. ui gfhEJOWLF
             EWOIFHEWUKfn iharuebeih reuahfelajbkuwri. ewiufgefj.
           </div>
+          <br></br> 
           <Button2
             title="Request to Join"
             action={e => this.handleRequest(e)}
           />
+          <br></br>
           <div style={{ fontWeight: "bold" }}>
             Requested collaborators:
             <ul

@@ -25,7 +25,7 @@ export const Title2 = styled(Flex)`
   font-size: 2rem;
 `;
 export const Title3 = styled(Flex)`
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 1.25rem;
 `;
 export const Name = styled(Flex)`

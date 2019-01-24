@@ -41,8 +41,8 @@ class MyUserProfile extends React.Component {
           <Name>Jordan Lawanson</Name>
           <p />
           <Title>
-            Email: {" jordan@me.com "}
-            <br /> <br />
+            Email: <br/><br/>
+            <div style={{ fontWeight: "normal" }}>jordan@me.com</div>
           </Title>
           <Title>
             Github: <br /> <br />

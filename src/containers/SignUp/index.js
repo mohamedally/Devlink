@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import Select from "../../components/Select";
 import ImageUpload from "../../components/ImageUpload";
 import Button2 from "../../components/Button2";
+import { withRouter } from "react-router-dom";
+
 // import { StateProvider } from "react-state-provider";
+const skillOptions = ["Programming", "Development", "Testing", "Design"];
 
 class SignUp extends Component {
   constructor(props) {
@@ -20,9 +22,7 @@ class SignUp extends Component {
       skills: "",
       bio: "",
 
-      newUsers: [],
-
-      skillOptions: ["Programming", "Development", "Design", "Testing"]
+      newUsers: []
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -63,8 +63,6 @@ class SignUp extends Component {
     // console.log("Name", name);
     this.setState({ [name]: value });
   };
-
-  //   handlePassword = e => {};
 
   render() {
     return (
@@ -122,7 +120,7 @@ class SignUp extends Component {
         <p />
         <Select
           name={"skills"}
-          options={this.state.skillOptions}
+          options={skillOptions}
           multiple={true}
           value={this.state.skills}
           placeholder={"Select Skills"}

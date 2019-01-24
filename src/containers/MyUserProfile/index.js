@@ -34,6 +34,7 @@ class MyUserProfile extends React.Component {
   };
 
   render() {
+    console.log("MyUserProfile", this.props);
     return (
       <div>
         {/* to={`/user/${id}`} */}

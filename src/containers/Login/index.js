@@ -8,10 +8,9 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      user: {
-        email: "",
-        password: ""
-      }
+      email: "",
+      password: "",
+      users: []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -20,25 +19,30 @@ class Login extends Component {
 
   /* This life cycle hook gets executed when the component mounts */
 
-  handleFormSubmit = e => {
+  handleFormSubmit = async e => {
     // Form submission logic
     e.preventDefault();
     const userData = this.state.user;
+
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    await this.setState({
+      users: user
+    });
+
     let path = `/wall`;
     this.props.history.push(path);
+
+    console.log(this.state.users);
   };
 
   handleInput = e => {
     let value = e.target.value;
     let name = e.target.name;
-    this.setState(prevState => {
-      return {
-        user: {
-          ...prevState.user,
-          [name]: value
-        }
-      };
-    });
+    this.setState({ [name]: value });
   };
 
   //   handlePassword = e => {};
@@ -51,7 +55,7 @@ class Login extends Component {
           className="form-input"
           type="text"
           name="email"
-          value={this.state.user.email}
+          value={this.state.email}
           placeholder="E-mail"
           onChange={e => this.handleInput(e)}
         />{" "}
@@ -61,7 +65,7 @@ class Login extends Component {
           className="form-input"
           name="password"
           type="text"
-          value={this.state.user.password}
+          value={this.state.password}
           placeholder="Password"
           onChange={e => this.handleInput(e)}
         />{" "}

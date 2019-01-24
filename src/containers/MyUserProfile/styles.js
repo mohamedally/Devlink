@@ -17,11 +17,11 @@ export const Container = styled(Flex)`
 `;
 
 export const Title = styled(Flex)`
-  font-weight: bolder;
+  font-weight: bold;
   justify-content: center;
 `;
 export const Title2 = styled(Flex)`
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 2rem;
 `;
 export const Title3 = styled(Flex)`
@@ -30,6 +30,6 @@ export const Title3 = styled(Flex)`
 `;
 export const Name = styled(Flex)`
   font-style: italic;
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 2.5rem;
 `;

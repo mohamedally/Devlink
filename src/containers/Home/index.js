@@ -36,25 +36,14 @@ class Home extends Component {
       <React.Fragment>
         <Welcome />
         <Container>
-<<<<<<< HEAD
-          <div>
+          <div style={{ textAlign: "center" }}>
             <p />
             <Button title="Login" action={e => this.handleLogin(e)} />
-=======
-          <div style={{textAlign: "center"}}>
-            <p></p>
-            <Button title="Login" action={e => this.handleLogin(e)}/>
->>>>>>> a7363efa032bc5bd4bf7a97ee6a4d1e1ca1c8f3e
             {this.state.showLogInComponent ? <Login /> : null}
             <p />
           </div>
-<<<<<<< HEAD
-          <div>
+          <div style={{ textAlign: "center" }}>
             <p />
-=======
-          <div style={{textAlign: "center"}}>
-            <p></p>
->>>>>>> a7363efa032bc5bd4bf7a97ee6a4d1e1ca1c8f3e
             <Button title="Sign Up" action={e => this.handleSignUp(e)} />
             {this.state.showSignUpComponent ? <SignUp /> : null}
             <p />

@@ -1,49 +1,47 @@
-import React, { Component } from "react";
-import Button from "../../components/Button";
-import { withRouter } from "react-router-dom";
-import Button2 from "../../components/Button2";
+import React, { Component } from "react"
+import Button from "../../components/Button"
+import { withRouter } from "react-router-dom"
+import Button2 from "../../components/Button2"
 
 class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       email: "",
       password: "",
-      users: []
-    };
+      user: {}
+    }
 
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
   /* This life cycle hook gets executed when the component mounts */
 
   handleFormSubmit = async e => {
     // Form submission logic
-    e.preventDefault();
-    const userData = this.state.user;
+    e.preventDefault()
+    const userData = this.state.user
 
     const user = {
       email: this.state.email,
       password: this.state.password
-    };
+    }
 
     await this.setState({
-      users: user
-    });
+      user: user
+    })
 
-    let path = `/wall`;
-    this.props.history.push(path);
-
-    console.log(this.state.users);
-  };
+    let path = `/wall`
+    this.props.history.push(path)
+  }
 
   handleInput = e => {
-    let value = e.target.value;
-    let name = e.target.name;
-    this.setState({ [name]: value });
-  };
+    let value = e.target.value
+    let name = e.target.name
+    this.setState({ [name]: value })
+  }
 
   //   handlePassword = e => {};
 
@@ -75,8 +73,8 @@ class Login extends Component {
         {/*Submit */}
         <p />
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(Login);
+export default withRouter(Login)

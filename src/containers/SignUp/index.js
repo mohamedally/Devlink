@@ -56,7 +56,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ textAlign: "center" }}>
         <p />
         <input
           className="form-input"

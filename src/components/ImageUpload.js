@@ -51,7 +51,7 @@ class ImageUpload extends React.Component {
             type="submit"
             onClick={e => this._handleSubmit(e)}
           >
-            Upload 
+            Upload Profile Picture
           </button>
         </form>
         <div className="imgPreview">{$imagePreview}</div>

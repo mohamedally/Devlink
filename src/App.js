@@ -13,6 +13,7 @@ import MyUserProfile from "./containers/MyUserProfile/";
 import Navbar from "./components/Navbar";
 import { StyledH3 } from "./styles";
 import User from "./containers/User";
+import Users from "./containers/Users";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
               <Route path="/wall" component={Wall} />
               <Route path="/profile" component={MyUserProfile} />
               <Route path="/user" component={User} />
+              <Route path="/users" component={Users} />
               <Redirect to="/" />
             </Switch>
           </div>

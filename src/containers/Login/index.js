@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Button from "../../components/Button";
 import { withRouter } from "react-router-dom";
 import Button2 from "../../components/Button2";
 
@@ -22,7 +21,6 @@ class Login extends Component {
   handleFormSubmit = async e => {
     // Form submission logic
     e.preventDefault();
-    const userData = this.state.user;
 
     const user = {
       email: this.state.email,

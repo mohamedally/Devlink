@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 class ImageUpload extends React.Component {
   constructor(props) {

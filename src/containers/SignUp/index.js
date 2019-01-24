@@ -56,7 +56,6 @@ class SignUp extends Component {
     console.log("HELLO THERE")
     // Form submission logic
     e.preventDefault();
-    const userData = this.state.newUsers;
 
     const newUser = {
       name: this.state.name,
@@ -157,7 +156,7 @@ class SignUp extends Component {
           placeholder="Bio"
           onChange={e => this.handleInput(e)}
         />
-        <p></p>
+        <p />
         <div>
           <ImageUpload />
         </div>

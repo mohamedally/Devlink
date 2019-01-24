@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Title3 } from "./MyUserProfile/styles";
-import Button from "../components/Button";
+import { Container, Title3, Title } from "./MyUserProfile/styles";
+import Button2 from "../components/Button2";
 const uuid = require("uuidv4");
 // import ReactDOM from "react-dom";
 
@@ -41,11 +41,24 @@ class ProjectPost extends React.Component {
           <div>
             This is all you need to know about the project. ui gfhEJOWLF
             EWOIFHEWUKfn iharuebeih reuahfelajbkuwri. ewiufgefj.
+          <p></p>
           </div>
-          <Button title="Request to Join" action={e => this.handleRequest(e)} />
+          <Button2 title="Request to Join" action={e => this.handleRequest(e)} />
           <div>
+          <p></p>
+          <Title>
             Requested collaborators:
-            <ul>{collaborators}</ul>
+          </Title>
+            <ul
+              style={{
+                listStyle: "none",
+                margin: "0px",
+                padding: "0px",
+                textAlign: "center"
+              }}
+            >
+              {collaborators}
+            </ul>
           </div>
         </Container>
       </div>

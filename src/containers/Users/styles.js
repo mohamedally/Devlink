@@ -15,3 +15,9 @@ export const Container = styled(Flex)`
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
   background-color: lightcoral;
 `;
+
+export const Title = styled(Flex)`
+  font-weight: bold;
+  justify-content: center;
+  font-size: 1.5rem;
+`;

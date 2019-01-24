@@ -4,6 +4,26 @@ import ImageUpload from "../../components/ImageUpload";
 import Button2 from "../../components/Button2";
 import { withRouter } from "react-router-dom";
 
+import gql from "graphql-tag"
+import { Mutation } from "react-apollo";
+
+const REGISTER_USER = gql`
+  mutation createUser($input: CreateUserInput!) {
+    createUser(input: $input) {
+    	user {
+        id
+        name
+        email
+        password
+        github
+        zipcode
+        skills
+        bio
+      }
+    }
+  }
+`
+
 // import { StateProvider } from "react-state-provider";
 const skillOptions = ["Programming", "Development", "Testing", "Design"];
 
@@ -33,6 +53,7 @@ class SignUp extends Component {
   // }
 
   handleFormSubmit = async e => {
+    console.log("HELLO THERE")
     // Form submission logic
     e.preventDefault();
     const userData = this.state.newUsers;
@@ -142,8 +163,12 @@ class SignUp extends Component {
         </div>
         {/* About you */}
         <p />
-        <Button2 title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
-        {/*Submit */}
+        <Mutation mutation = {REGISTER_USER} variables = {{ input: this.state }}>
+          {(createUser, {loading, error, data}) => (
+            <Button2 onClick={createUser} title="Submit"  />
+          )}
+          {/*Submit */}
+        </Mutation>
         <p />
       </div>
     );
@@ -151,3 +176,5 @@ class SignUp extends Component {
 }
 
 export default withRouter(SignUp);
+
+//action={e => this.handleFormSubmit(e)}

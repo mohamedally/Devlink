@@ -1,7 +1,7 @@
 import React from "react"
 import Button from "../../components/Button"
 import { StyledLink } from "../../components/Navbar/styles"
-import { Container, Title, Name, People, ThreadTitle } from "./styles"
+import { Container, Container2, Title, Name, People, ThreadTitle } from "./styles"
 import Button2 from "../../components/Button2"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
@@ -111,12 +111,13 @@ class Wall extends React.Component {
           <p />
           <ThreadTitle>Project Thread:</ThreadTitle>
           <p />
+        </Container>
+        <Container2>
           <ul
             style={{
               listStyle: "none",
               margin: "0px",
               padding: "0px",
-              textAlign: "center"
             }}
           />
           <ul>
@@ -158,7 +159,6 @@ class Wall extends React.Component {
                           listStyle: "none",
                           margin: "0px",
                           padding: "0px",
-                          textAlign: "center"
                         }}
                       >
                         {project.skills.map(skill => (
@@ -193,7 +193,6 @@ class Wall extends React.Component {
                           listStyle: "none",
                           margin: "0px",
                           padding: "0px",
-                          textAlign: "center"
                         }}
                       >
                         {project.collaborators.map(collaborator => (
@@ -215,7 +214,6 @@ class Wall extends React.Component {
                           listStyle: "none",
                           margin: "0px",
                           padding: "0px",
-                          textAlign: "center"
                         }}
                       >
                         {project.requests.map(collaborator => (
@@ -233,7 +231,7 @@ class Wall extends React.Component {
               }}
             </Query>
           </ul>
-        </Container>
+        </Container2>
       </React.Fragment>
     )
   }

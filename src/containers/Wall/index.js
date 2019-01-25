@@ -1,39 +1,39 @@
-import React from "react"
-import Button from "../../components/Button"
-import { StyledLink } from "../../components/Navbar/styles"
-import { Container, Title, Name, People, ThreadTitle } from "./styles"
-import Button2 from "../../components/Button2"
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import { Mutation } from "react-apollo"
-import { COLLABORATE_REQUEST, CREATE_PROJECT } from "../../graphql/mutations"
-import { GET_PROJECTS, GET_USER } from "../../graphql/queries"
-import { Link } from "react-router-dom"
-import config from "../../config"
+import React from "react";
+import Button from "../../components/Button";
+import { StyledLink } from "../../components/Navbar/styles";
+import { Container, Title, Name, People, ThreadTitle } from "./styles";
+import Button2 from "../../components/Button2";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
+import { COLLABORATE_REQUEST, CREATE_PROJECT } from "../../graphql/mutations";
+import { GET_PROJECTS, GET_USER } from "../../graphql/queries";
+import { Link } from "react-router-dom";
+import config from "../../config";
 
-const uuid = require("uuidv4")
-const jwt = require("jsonwebtoken")
+const uuid = require("uuidv4");
+const jwt = require("jsonwebtoken");
 
 class Wall extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       projectTitle: "",
       projectDescription: "",
       newPosts: [],
       collaborators: []
-    }
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleInput = this.handleInput.bind(this)
-    this.handleRequest = this.handleRequest.bind(this)
+    };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleRequest = this.handleRequest.bind(this);
   }
 
   handleRequest = async e => {
-    const newCollaborators = { name: "Jordan Lawanson", id: uuid() }
+    const newCollaborators = { name: "Jordan Lawanson", id: uuid() };
     await this.setState({
       collaborators: [...this.state.collaborators, newCollaborators]
-    })
-  }
+    });
+  };
 
   handleFormSubmit = async () => {
     //Form submission logic
@@ -45,25 +45,25 @@ class Wall extends React.Component {
     // await this.setState({
     //   newPosts: [newPost, ...this.state.newPosts]
     // })
-    window.location.reload()
-  }
+    window.location.reload();
+  };
 
   handleInput = e => {
-    let value = e.target.value
-    let name = e.target.name
-    this.setState({ [name]: value })
-  }
+    let value = e.target.value;
+    let name = e.target.name;
+    this.setState({ [name]: value });
+  };
 
   render() {
-    const token = localStorage.getItem("auth_token")
-    const user = token ? jwt.verify(token, config.tokenSecret).id : ""
+    const token = localStorage.getItem("auth_token");
+    const user = token ? jwt.verify(token, config.tokenSecret).id : "";
     const newCollaborators = this.state.collaborators.map(collaborator => {
       return (
         <div key={uuid()}>
           <li>{collaborator.name}</li>
         </div>
-      )
-    })
+      );
+    });
 
     return (
       <React.Fragment>
@@ -122,8 +122,8 @@ class Wall extends React.Component {
           <ul>
             <Query query={GET_PROJECTS}>
               {({ loading, error, data }) => {
-                if (loading) return "Loading..."
-                if (error) return "Error!"
+                if (loading) return "Loading...";
+                if (error) return "Error!";
                 return data.projects.map(project => (
                   <li key={project.id}>
                     <div>
@@ -140,9 +140,9 @@ class Wall extends React.Component {
                             }}
                           >
                             {({ loading, error, data }) => {
-                              if (loading) return "Loading..."
-                              if (error) return "Error!"
-                              return <div>{data.user.name}</div>
+                              if (loading) return "Loading...";
+                              if (error) return "Error!";
+                              return <div>{data.user.name}</div>;
                             }}
                           </Query>
                         </Name>
@@ -158,7 +158,7 @@ class Wall extends React.Component {
                           listStyle: "none",
                           margin: "0px",
                           padding: "0px",
-                          textAlign: "center"
+                          textAlign: "left"
                         }}
                       >
                         {project.skills.map(skill => (
@@ -193,7 +193,7 @@ class Wall extends React.Component {
                           listStyle: "none",
                           margin: "0px",
                           padding: "0px",
-                          textAlign: "center"
+                          textAlign: "left"
                         }}
                       >
                         {project.collaborators.map(collaborator => (
@@ -215,7 +215,7 @@ class Wall extends React.Component {
                           listStyle: "none",
                           margin: "0px",
                           padding: "0px",
-                          textAlign: "center"
+                          textAlign: "left"
                         }}
                       >
                         {project.requests.map(collaborator => (
@@ -229,14 +229,14 @@ class Wall extends React.Component {
                     </div>
                     <p />
                   </li>
-                ))
+                ));
               }}
             </Query>
           </ul>
         </Container>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default Wall
+export default Wall;

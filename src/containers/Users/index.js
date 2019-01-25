@@ -111,18 +111,36 @@ class Users extends React.Component {
       return userSearch;
     }
 
-    // console.log(matches);
-    /*
-    const matchList = () => {
-      return matches.map(user => {
-        return (
-          <li key={user.id}>
-            <StyledLink to={`/user/${user.id}`}>{user.name}</StyledLink>
-          </li>
-        );
-      }); 
-    };
+    const matchList = userSearch.map(user => {
+      return (
+        <li key={user.id}>
+          <StyledLink to={`/user/${user.id}`}>{user.name}</StyledLink>
+          <div>
+            <Title3>
+              <b>Projects:</b>
+            </Title3>
+            <ul>
+              {user.projects.map(project => (
+                <div key={project.id}>
+                  <li>
+                    {this.state.showProjectComponent ? (
+                      <ProjectPost data={project} />
+                    ) : (
+                      project.title
+                    )}
+                  </li>{" "}
+                </div>
+              ))}
+              <p />
+            </ul>
+          </div>
+        </li>
+      );
+    });
 
+    console.log(matchList);
+
+    /*
     if (matches.length === 0) {
       users = "No matches";
     } else if (matches.length > 0) {
@@ -147,8 +165,7 @@ class Users extends React.Component {
             action={e => this.handleClick(e)}
           />
         </div>
-        {this.state.search ? <ul>{userSearch}</ul> : <ul>{users}</ul>}
-        <ul>{users}</ul>
+        {this.state.search ? <ul>{matchList}</ul> : <ul>{users}</ul>}
       </React.Fragment>
     );
   }

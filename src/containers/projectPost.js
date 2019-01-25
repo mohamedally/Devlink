@@ -75,7 +75,7 @@ class ProjectPost extends React.Component {
                 listStyle: "none",
                 margin: "0px",
                 padding: "0px",
-                textAlign: "center"
+                textAlign: "left"
               }}
             >
               {requests}
@@ -89,7 +89,7 @@ class ProjectPost extends React.Component {
                 listStyle: "none",
                 margin: "0px",
                 padding: "0px",
-                textAlign: "center"
+                textAlign: "left"
               }}
             >
               {collaborators}

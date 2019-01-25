@@ -66,9 +66,6 @@ class User extends React.Component {
             <li>
               <ProjectPost />
             </li>
-            <li>
-              <projectPost />
-            </li>
           </ul>
         </Container>
       </div>

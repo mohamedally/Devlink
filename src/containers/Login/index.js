@@ -41,8 +41,6 @@ class Login extends Component {
     this.handleInput = this.handleInput.bind(this)
   }
 
-  /* This life cycle hook gets executed when the component mounts */
-
   loginComplete = async data => {
     if (data.loginUser.error) {
       await this.setState({
@@ -57,7 +55,6 @@ class Login extends Component {
     })
 
     localStorage.setItem("auth_token", data.loginUser.token)
-    localStorage.setItem("user", data.loginUser.user.id)
 
     let path = `/wall`
     this.props.history.push(path)
@@ -68,8 +65,6 @@ class Login extends Component {
     let name = e.target.name
     this.setState({ [name]: value })
   }
-
-  //   handlePassword = e => {};
 
   render() {
     const { email, password, name, error } = this.state
@@ -109,8 +104,6 @@ class Login extends Component {
             )}
           </Mutation>
         </div>
-        {/* <Button2 title="Submit" action={e => this.handleFormSubmit(e)} />{" "} */}
-        {/*Submit */}
         <p />
       </div>
     )

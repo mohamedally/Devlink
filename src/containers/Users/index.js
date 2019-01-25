@@ -1,5 +1,17 @@
 import React from "react";
 import Button2 from "../../components/Button2";
+// import GET_USERS from "../../graphql/queries";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+
+const GET_USERS = gql`
+  query users {
+    users {
+      id
+      name
+    }
+  }
+`;
 
 class Users extends React.Component {
   constructor(props) {
@@ -13,16 +25,24 @@ class Users extends React.Component {
   handleInput = e => {
     let value = e.target.value;
     let name = e.target.name;
-    // console.log("Value", value);
-    // console.log("Name", name);
     this.setState({ [name]: value });
   };
 
   handleSearch = e => {
     e.preventDefault();
+    console.log(this.state.search);
   };
 
   render() {
+    // const users = () => (
+    //   <Query query={GET_USERS}>
+    //     {({ loading, error, data }) => {
+    //       if (loading) return "Loading...";
+    //       if (error) return "Error!";
+    //       return ({data.users.map(user => (<li key={user.id}>{user.name}</li>))})}};
+    //   </Query>
+    // );
+
     return (
       <React.Fragment>
         <input
@@ -35,10 +55,13 @@ class Users extends React.Component {
         />
         <Button2 title="Search" action={e => this.handleSearch(e)} />
         <ul>
-          <li>Jordan Lawanson</li>
-          <li>Yooni Park</li>
-          <li>Rob Walker</li>
-          <li>Mohammed Ally</li>
+          <Query query={GET_USERS}>
+            {({ loading, error, data }) => {
+              if (loading) return "Loading...";
+              if (error) return "Error!";
+              return data.users.map(user => <li key={user.id}>{user.name}</li>);
+            }}
+          </Query>
         </ul>
       </React.Fragment>
     );

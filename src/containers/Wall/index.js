@@ -198,7 +198,6 @@ class Wall extends React.Component {
           style={{
             listStyle: "none",
             margin: "0px",
-            marginLeft: "200px",
             padding: "0px"
           }}
         >

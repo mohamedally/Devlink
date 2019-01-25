@@ -3,9 +3,47 @@ import Button from "../../components/Button";
 import { StyledLink } from "../../components/Navbar/styles";
 import { Container, Title, Name, People, ThreadTitle } from "./styles";
 import Button2 from "../../components/Button2";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
 const uuid = require("uuidv4");
 
-// import ReactDOM from "react-dom";
+const ADD_REQUEST = gql`
+  mutation collaborateRequest($projectId: ID!) {
+    collaborateRequest(projectId: $projectId) {
+      message
+      error {
+        message
+      }
+    }
+  }
+`;
+
+const GET_PROJECTS = gql`
+  query projects {
+    projects {
+      id
+      title
+      description
+      leader
+      requests {
+        user {
+          id
+          name
+        }
+      }
+      collaborators {
+        user {
+          id
+          name
+        }
+      }
+      skills {
+        skill
+      }
+    }
+  }
+`;
 
 class Wall extends React.Component {
   constructor(props) {
@@ -32,7 +70,7 @@ class Wall extends React.Component {
 
   handleRequest = async e => {
     const newCollaborators = { name: "Jordan Lawanson", id: uuid() };
-    this.setState({
+    await this.setState({
       collaborators: [...this.state.collaborators, newCollaborators]
     });
 
@@ -62,7 +100,7 @@ class Wall extends React.Component {
   };
 
   render() {
-    const collaborators = this.state.collaborators.map(collaborator => {
+    const newCollaborators = this.state.collaborators.map(collaborator => {
       return (
         <div key={uuid()}>
           <li>{collaborator.name}</li>
@@ -77,8 +115,8 @@ class Wall extends React.Component {
             <Title>{post.projecttitle}</Title>
           </div>
           <div>
-            <StyledLink to="/user">
-              <Name>{post.username}</Name>
+            <StyledLink to="/profile">
+              <Name>Leader</Name>
             </StyledLink>
           </div>
           <div>{post.projectdescription}</div>
@@ -98,7 +136,7 @@ class Wall extends React.Component {
                 textAlign: "center"
               }}
             >
-              {collaborators}
+              {newCollaborators}
             </ul>
           </div>
           <p />
@@ -151,6 +189,101 @@ class Wall extends React.Component {
             }}
           >
             {posts}
+          </ul>
+          <ul>
+            <Query query={GET_PROJECTS}>
+              {({ loading, error, data }) => {
+                if (loading) return "Loading...";
+                if (error) return "Error!";
+                return data.projects.map(project => (
+                  <li key={project.id}>
+                    <div>
+                      <Title>{project.title}</Title>
+                    </div>
+                    <div>
+                      <StyledLink to="/user/${project.leader}">
+                        <Name>Leader</Name>
+                      </StyledLink>
+                    </div>
+                    <div>{project.description}</div>
+                    <div>
+                      <People>
+                        <b>Skills Needed:</b>
+                      </People>
+                      <ul
+                        style={{
+                          listStyle: "none",
+                          margin: "0px",
+                          padding: "0px",
+                          textAlign: "center"
+                        }}
+                      >
+                        {project.skills.map(skill => (
+                          <li key={skill.id}>{skill.skill}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p />
+                    <Mutation
+                      mutation={ADD_REQUEST}
+                      variables={{
+                        collaborateRequest: this.state.collaborators
+                      }}
+                    >
+                      {(collaborateRequest, { data }) => (
+                        <Button2
+                          title="Request to Join"
+                          action={collaborateRequest}
+                        />
+                      )}
+                    </Mutation>
+                    <p />
+                    <div>
+                      <People>
+                        <b>Accepted Collaborators:</b>
+                      </People>
+                      <ul
+                        style={{
+                          listStyle: "none",
+                          margin: "0px",
+                          padding: "0px",
+                          textAlign: "center"
+                        }}
+                      >
+                        {console.log(project.collaborators)}
+                        {project.collaborators.map(collaborator => (
+                          <li key={collaborator.user.id}>
+                            {collaborator.user.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p />
+                    <div>
+                      <People>
+                        <b>Requested collaborators:</b>
+                      </People>
+                      <ul
+                        style={{
+                          listStyle: "none",
+                          margin: "0px",
+                          padding: "0px",
+                          textAlign: "center"
+                        }}
+                      >
+                        {console.log(project.requests)}
+                        {project.requests.map(collaborator => (
+                          <li key={collaborator.user.id}>
+                            {collaborator.user.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p />
+                  </li>
+                ));
+              }}
+            </Query>
           </ul>
         </Container>
       </React.Fragment>

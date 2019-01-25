@@ -18,8 +18,8 @@ class User extends React.Component {
           <Name>Yooni Park</Name>
           <p />
           <Title>
-            Email: {" yooni@me.com "}
-            <br /> <br />
+            Email: <br/><br/>
+            <div style={{ fontWeight: "normal" }}>yooni@me.com</div>
           </Title>
           <Title>
             Github: <br /> <br />
@@ -65,9 +65,6 @@ class User extends React.Component {
           >
             <li>
               <ProjectPost />
-            </li>
-            <li>
-              <projectPost />
             </li>
           </ul>
         </Container>

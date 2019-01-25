@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.1.27",
+    "dotenv": "^6.2.0",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
     "grid-styled": "^5.0.2",
+    "jsonwebtoken": "^8.4.0",
     "react": "^16.6.3",
     "react-apollo": "^2.4.0",
     "react-dom": "^16.6.3",

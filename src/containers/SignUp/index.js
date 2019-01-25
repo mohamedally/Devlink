@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import Select from "../../components/Select";
-import ImageUpload from "../../components/ImageUpload";
-import Button2 from "../../components/Button2";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react"
+import Select from "../../components/Select"
+import ImageUpload from "../../components/ImageUpload"
+import Button2 from "../../components/Button2"
+import { withRouter } from "react-router-dom"
 
 import gql from "graphql-tag"
 import { Mutation } from "react-apollo";
@@ -23,11 +23,11 @@ const REGISTER_USER = gql`
 `
 
 // import { StateProvider } from "react-state-provider";
-const skillOptions = ["Programming", "Development", "Testing", "Design"];
+const skillOptions = ["Programming", "Development", "Testing", "Design"]
 
 class SignUp extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     // this.newUsersState = StateProvider.getState("newUsers");
 
@@ -57,14 +57,13 @@ class SignUp extends Component {
   };
 
   handleInput = e => {
-    let value = e.target.value;
-    let name = e.target.name;
-    // console.log("Value", value);
-    // console.log("Name", name);
-    this.setState({ [name]: value });
-  };
+    let value = e.target.value
+    let name = e.target.name
+    this.setState({ [name]: value })
+  }
 
   render() {
+    console.log(this.props.from)
     return (
       <div style={{ textAlign: "center" }}>
         <p />
@@ -149,10 +148,8 @@ class SignUp extends Component {
         </Mutation>
         <p />
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(SignUp);
-
-//action={e => this.handleFormSubmit(e)} 
+export default withRouter(SignUp)

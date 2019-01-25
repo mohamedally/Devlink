@@ -1,13 +1,29 @@
 import gql from "graphql-tag"
 
-import gql from "graphql-tag"
-
 const GET_USER = gql`
   query user($id: ID!) {
     user(id: $id) {
       id
       name
-      school
+      email
+      github
+      bio
+      city
+      country
+      zipcode
+      projects {
+        id
+        title
+        description
+        leader
+        requests {
+          user {
+            id
+            name
+            github
+          }
+        }
+      }
     }
   }
 `

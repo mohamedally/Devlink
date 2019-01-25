@@ -14,10 +14,8 @@ const REGISTER_USER = gql`
         id
         name
         email
-        password
         github
         zipcode
-        skills
         bio
       }
     }
@@ -39,10 +37,8 @@ class SignUp extends Component {
       github: "",
       zipcode: "",
       password: "",
-      skills: "",
+      //skills: "",
       bio: "",
-
-      newUsers: []
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -52,28 +48,12 @@ class SignUp extends Component {
   //   this.newUsersState.observe("name");
   // }
 
-  handleFormSubmit = async e => {
-    console.log("HELLO THERE")
+  handleFormSubmit = async data => {
     // Form submission logic
-    e.preventDefault();
-
-    const newUser = {
-      name: this.state.name,
-      email: this.state.email,
-      github: this.state.github,
-      zipcode: this.state.zipcode,
-      password: this.state.password,
-      skills: this.state.skills,
-      bio: this.state.bio
-    };
-
-    await this.setState({
-      newUsers: newUser
-    });
+  
+    console.log(data)
     let path = `/wall`;
     this.props.history.push(path);
-
-    console.log(this.state.newUsers);
   };
 
   handleInput = e => {
@@ -138,14 +118,14 @@ class SignUp extends Component {
         />{" "}
         {/* Zipcode of the user */}
         <p />
-        <Select
+        {/*<Select
           name={"skills"}
           options={skillOptions}
           multiple={true}
           value={this.state.skills}
           placeholder={"Select Skills"}
           handleChange={e => this.handleInput(e)}
-        />{" "}
+        />{" "} */}
         {/* List of Skills (eg. Programmer, developer) */}
         <p />
         <textarea
@@ -162,11 +142,10 @@ class SignUp extends Component {
         </div>
         {/* About you */}
         <p />
-        <Mutation mutation = {REGISTER_USER} variables = {{ input: this.state }}>
-          {(createUser, {loading, error, data}) => (
-            <Button2 onClick={createUser} title="Submit"  />
+        <Mutation mutation = {REGISTER_USER} variables = {{ input: this.state }} onCompleted={(data) => this.handleFormSubmit(data)}>
+          {createUser => (
+            <input type="submit" value="submit" onClick={createUser} />
           )}
-          {/*Submit */}
         </Mutation>
         <p />
       </div>
@@ -176,4 +155,4 @@ class SignUp extends Component {
 
 export default withRouter(SignUp);
 
-//action={e => this.handleFormSubmit(e)}
+//action={e => this.handleFormSubmit(e)} 

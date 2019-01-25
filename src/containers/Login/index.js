@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import React, { Component } from "react"
-import Button from "../../components/Button"
-import { withRouter } from "react-router-dom"
-import Button2 from "../../components/Button2"
-=======
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Button2 from "../../components/Button2";
->>>>>>> 03e2595a6194e5b6d85d14a1787e555e36ae36b1
 
 class Login extends Component {
   constructor(props) {
@@ -27,12 +20,7 @@ class Login extends Component {
 
   handleFormSubmit = async e => {
     // Form submission logic
-<<<<<<< HEAD
-    e.preventDefault()
-    const userData = this.state.user
-=======
     e.preventDefault();
->>>>>>> 03e2595a6194e5b6d85d14a1787e555e36ae36b1
 
     const user = {
       email: this.state.email,

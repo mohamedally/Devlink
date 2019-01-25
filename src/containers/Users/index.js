@@ -71,7 +71,13 @@ class Users extends React.Component {
                 <Title3>
                   <b>Projects:</b>
                 </Title3>
-                <ul>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: "0px",
+                    padding: "0px",
+                  }}
+                >
                   {user.projects.map(project => (
                     <div key={project.id}>
                       <li>

@@ -1,7 +1,14 @@
 import React from "react";
 import Button from "../../components/Button";
 import { StyledLink } from "../../components/Navbar/styles";
-import { Container, Title, Name, People, ThreadTitle } from "./styles";
+import {
+  Container,
+  Container2,
+  Title,
+  Name,
+  People,
+  ThreadTitle
+} from "./styles";
 import Button2 from "../../components/Button2";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -108,15 +115,16 @@ class Wall extends React.Component {
           >
             {mutation => <Button title="Add Post" action={mutation} />}
           </Mutation>
-          <p />
-          <ThreadTitle>Project Thread:</ThreadTitle>
-          <p />
+        </Container>
+        <p />
+        <ThreadTitle>Project Thread:</ThreadTitle>
+        <p />
+        <Container2>
           <ul
             style={{
               listStyle: "none",
               margin: "0px",
-              padding: "0px",
-              textAlign: "center"
+              padding: "0px"
             }}
           />
           <ul>
@@ -233,7 +241,7 @@ class Wall extends React.Component {
               }}
             </Query>
           </ul>
-        </Container>
+        </Container2>
       </React.Fragment>
     );
   }

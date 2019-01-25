@@ -28,6 +28,7 @@ const GET_USERS = gql`
           }
         }
       }
+      dist_meters
     }
   }
 `;
@@ -38,7 +39,8 @@ class Users extends React.Component {
 
     this.state = {
       search: "",
-      showProjectComponent: false
+      showProjectComponent: false,
+      submit: false
     };
   }
 
@@ -59,8 +61,10 @@ class Users extends React.Component {
   };
 
   render() {
+    // console.log(this.state.search)
+    // const variable = this.state.search ? this.state.search : null
     let users = (
-      <Query query={GET_USERS}>
+      <Query query={GET_USERS} variables={{location: this.state.search}}>
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return "Error!";
@@ -68,6 +72,7 @@ class Users extends React.Component {
             <li key={user.id}>
               <StyledLink to={`/user/${user.id}`}>{user.name}</StyledLink>
               <div>
+                <div>{user.dist_meters}</div>
                 <Title3>
                   <b>Projects:</b>
                 </Title3>
@@ -97,25 +102,21 @@ class Users extends React.Component {
         }}
       </Query>
     );
-
-    let userSearch = "";
+    /*
     if (this.state.search) {
-      const matches = (
-        <Query query={GET_USERS}>
-          {({ loading, error, data }) => {
-            if (loading) return "Loading...";
-            if (error) return "Error!";
-            return data.users.filter(user =>
-              user.name.includes(this.state.search)
-            );
-          }}
-        </Query>
+      let matches = (
+        <Query query={GET_USERS} variables={ this.state.search }>
+        {({ loading, error, data }) => {
+          if (loading) return "Loading...";
+          if (error) return "Error!";
+          console.log(data.users)
+          return data.users
+        }}
+      </Query>
       );
-      // console.log("HELLO THERE1");
-      // console.log(matches);
-      // console.log("HELLO THERE2");
-      // return userSearch;
-    }
+      console.log(matches)
+      return matches
+    } */
 
     // const matchList = userSearch.map(user => {
     //   return (
@@ -164,15 +165,16 @@ class Users extends React.Component {
           placeholder="Search Users"
           onChange={e => this.handleInput(e)}
         />
-        <Button2 title="Search" action={e => this.handleSearch(e)} />
+        {/*<Button2 title="Search" action={e => this.handleSearch(e)} />*/}
         <div>
           <Button2
             title="Toggle to Switch Views"
             action={e => this.handleClick(e)}
           />
         </div>
-        {/* {this.state.search ? <ul>{matchList}</ul> : <ul>{users}</ul>} */}
-        <ul>{users}</ul>
+        <React.Fragment>
+          <ul>{users}</ul>
+      </React.Fragment>
       </React.Fragment>
     );
   }

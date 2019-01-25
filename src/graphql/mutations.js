@@ -13,7 +13,7 @@ const LOGIN_USER = gql`
         country
         zipcode
       }
-      token
+      tokenxs
       error {
         message
       }
@@ -35,4 +35,4 @@ const EDIT_USER = gql`
   }
 `
 
-export default LOGIN_USER, EDIT_USER
+export default LOGIN_USER; EDIT_USER

@@ -23,6 +23,13 @@ const GET_USER = gql`
             github
           }
         }
+        collaborators {
+          user {
+            id
+            name
+            github
+          }
+        }
       }
     }
   }

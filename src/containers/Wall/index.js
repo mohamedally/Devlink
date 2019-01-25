@@ -14,6 +14,7 @@ import Button2 from "../../components/Button2";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import GET_USER from "../../graphql/queries";
 const uuid = require("uuidv4");
 
 const ADD_REQUEST = gql`
@@ -140,8 +141,7 @@ class Wall extends React.Component {
               style={{
                 listStyle: "none",
                 margin: "0px",
-                padding: "0px",
-                textAlign: "center"
+                padding: "0px"
               }}
             >
               {newCollaborators}
@@ -199,8 +199,7 @@ class Wall extends React.Component {
           style={{
             listStyle: "none",
             margin: "0px",
-            padding: "0px",
-            textAlign: "center"
+            padding: "0px"
           }}
         >
           {posts}
@@ -212,13 +211,31 @@ class Wall extends React.Component {
               if (error) return "Error!";
               return data.projects.map(project => (
                 <Container2 key={project.id}>
+                <p></p> 
+                <p></p>
+                <p></p>
+                <p></p>
                   <li>
                     <div>
                       <Title>{project.title}</Title>
                     </div>
                     <div>
                       <StyledLink to={`/user/${project.leader}`}>
-                        <Name>Leader</Name>
+                        <Name>
+                          {console.log(project.leader)}
+                          <Query
+                            query={GET_USER}
+                            variables={{
+                              id: project.leader
+                            }}
+                          >
+                            {({ loading, error, data }) => {
+                              if (loading) return "Loading...";
+                              if (error) return "Error!";
+                              return <div>{data.user.name}</div>;
+                            }}
+                          </Query>
+                        </Name>
                       </StyledLink>
                     </div>
                     <div>{project.description}</div>
@@ -266,7 +283,6 @@ class Wall extends React.Component {
                           textAlign: "center"
                         }}
                       >
-                        {console.log("Collab", project.collaborators)}
                         {project.collaborators.map(collaborator => (
                           <li key={collaborator.user.id}>
                             <Link to={`/user/${collaborator.user.id}`}>
@@ -289,7 +305,6 @@ class Wall extends React.Component {
                           textAlign: "center"
                         }}
                       >
-                        {console.log("Request", project.requests)}
                         {project.requests.map(collaborator => (
                           <li key={collaborator.user.id}>
                             <Link to={`/user/${collaborator.user.id}`}>

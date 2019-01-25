@@ -1,9 +1,8 @@
 import React from "react";
 import { Container, Title3 } from "./MyUserProfile/styles";
-import Button from "../components/Button";
-import gql from "graphql-tag";
 import Button2 from "../components/Button2";
-import { Title } from "./Wall/styles";
+import { Link } from "react-router-dom";
+
 const uuid = require("uuidv4");
 
 class ProjectPost extends React.Component {
@@ -27,25 +26,37 @@ class ProjectPost extends React.Component {
   };
 
   render() {
-    const collaborators = this.state.collaborators.map(collaborator => {
+    // const collaborators = this.state.collaborators.map(collaborator => {
+    //   return (
+    //     <div key={uuid()}>
+    //       <li>{collaborator.name}</li>
+    //     </div>
+    //   );
+    // });
+
+    const requests = this.state.project.requests.map(collaborator => {
       return (
-        <div key={uuid()}>
-          <li>{collaborator.name}</li>
+        <div key={collaborator.user.id}>
+          <li>
+            <Link to={`/user/${collaborator.user.id}`}>
+              {collaborator.user.name}
+            </Link>
+          </li>
         </div>
       );
     });
 
-    // const collaborators = this.state.project.collaborators.map(collaborator => {
-    //   return (
-    //     <div key={collaborator.user.id}>
-    //       <li>
-    //         <StyledLink to={`/user/${collaborator.user.id}`}>
-    //           {collaborator.user.name}
-    //         </StyledLink>
-    //       </li>
-    //     </div>
-    //   );
-    // });
+    const collaborators = this.props.data.collaborators.map(collaborator => {
+      return (
+        <div key={collaborator.user.id}>
+          <li>
+            <Link to={`/user/${collaborator.user.id}`}>
+              {collaborator.user.name}
+            </Link>
+          </li>
+        </div>
+      );
+    });
 
     return (
       <div>
@@ -75,12 +86,22 @@ class ProjectPost extends React.Component {
                 textAlign: "center"
               }}
             >
-              {collaborators}
+              {requests}
             </ul>
             <p />
             <div>
               <b>Accepted collaborators:</b>
             </div>
+            <ul
+              style={{
+                listStyle: "none",
+                margin: "0px",
+                padding: "0px",
+                textAlign: "center"
+              }}
+            >
+              {collaborators}
+            </ul>
           </div>
           {/* </Query> */}
         </Container>

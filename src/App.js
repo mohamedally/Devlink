@@ -59,7 +59,7 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/wall" component={Wall} />
                 <Route path="/profile" component={MyUserProfile} />
-                <Route path="/user" component={User} />
+                <Route path="/user/:id" component={User} />
                 <Route path="/users" component={Users} />
                 <Redirect to="/" />
               </Switch>

@@ -13,27 +13,38 @@ export const Container = styled(Flex)`
   text-justify: center;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
-  background-color: lightcoral;
+  background-color: whitesmoke;
+`;
+
+export const Container2 = styled(Flex)`
+  display: flex;
+  flex-direction: column;
+  /* height: 150px;
+  width: 150px; */
+  margin: 15px;
+  padding: 5px;
+  font-family: ${({ theme }) => theme.fonts.primary.family};
+  font-weight: ${({ theme }) => theme.fonts.primary.weight};
+  background-color: white;
 `;
 
 export const Title = styled(Flex)`
   font-weight: bold;
   font-size: 2.5rem;
-  justify-content: center;
 `;
 export const Name = styled(Flex)`
   font-weight: bold;
   font-size: 1.5rem;
-  justify-content: center;
 `;
 
 export const People = styled(Flex)`
   font-weight: bold;
   font-size: 1rem;
-  justify-content: center;
 `;
 
 export const ThreadTitle = styled(Flex)`
   font-weight: bold;
   font-size: 3rem;
+  justify-content: center;
+  color: #333;
 `;

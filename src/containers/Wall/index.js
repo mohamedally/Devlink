@@ -7,7 +7,8 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import { Mutation } from "react-apollo"
 import { COLLABORATE_REQUEST, CREATE_PROJECT } from "../../graphql/mutations"
-import { GET_PROJECTS } from "../../graphql/queries"
+import { GET_PROJECTS, GET_USER } from "../../graphql/queries"
+import { Link } from "react-router-dom"
 import config from "../../config"
 
 const uuid = require("uuidv4")
@@ -74,6 +75,11 @@ class Wall extends React.Component {
             name="projectTitle"
             type="text"
             value={this.state.projectTitle}
+            style={{
+              borderColor: "purple",
+              borderRadius: "3px",
+              borderWidth: "1px"
+            }}
             placeholder="Project Title"
             onChange={e => this.handleInput(e)}
           />
@@ -82,8 +88,9 @@ class Wall extends React.Component {
             className="form-input"
             type="text"
             name="projectDescription"
-            rows="10"
+            rows="5"
             cols="50"
+            style={{ borderColor: "purple", borderRadius: "5px" }}
             value={this.state.projectDescription}
             placeholder="Project Description"
             onChange={e => this.handleInput(e)}
@@ -123,8 +130,22 @@ class Wall extends React.Component {
                       <Title>{project.title}</Title>
                     </div>
                     <div>
-                      <StyledLink to="/user/${project.leader}">
-                        <Name>Leader</Name>
+                      <StyledLink to={`/user/${project.leader}`}>
+                        <Name>
+                          {console.log(project.leader)}
+                          <Query
+                            query={GET_USER}
+                            variables={{
+                              id: project.leader
+                            }}
+                          >
+                            {({ loading, error, data }) => {
+                              if (loading) return "Loading..."
+                              if (error) return "Error!"
+                              return <div>{data.user.name}</div>
+                            }}
+                          </Query>
+                        </Name>
                       </StyledLink>
                     </div>
                     <div>{project.description}</div>
@@ -177,7 +198,9 @@ class Wall extends React.Component {
                       >
                         {project.collaborators.map(collaborator => (
                           <li key={collaborator.user.id}>
-                            {collaborator.user.name}
+                            <Link to={`/user/${collaborator.user.id}`}>
+                              {collaborator.user.name}
+                            </Link>{" "}
                           </li>
                         ))}
                       </ul>
@@ -197,7 +220,9 @@ class Wall extends React.Component {
                       >
                         {project.requests.map(collaborator => (
                           <li key={collaborator.user.id}>
-                            {collaborator.user.name}
+                            <Link to={`/user/${collaborator.user.id}`}>
+                              {collaborator.user.name}
+                            </Link>
                           </li>
                         ))}
                       </ul>

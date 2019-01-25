@@ -4,6 +4,25 @@ import ImageUpload from "../../components/ImageUpload"
 import Button2 from "../../components/Button2"
 import { withRouter } from "react-router-dom"
 
+import gql from "graphql-tag"
+import { Mutation } from "react-apollo";
+
+const REGISTER_USER = gql`
+  mutation createUser($input: CreateUserInput!) {
+    createUser(input: $input) {
+    	user {
+        id
+        name
+        email
+        github
+        zipcode
+        bio
+      }
+      token
+    }
+  }
+`
+
 // import { StateProvider } from "react-state-provider";
 const skillOptions = ["Programming", "Development", "Testing", "Design"]
 
@@ -19,41 +38,29 @@ class SignUp extends Component {
       github: "",
       zipcode: "",
       password: "",
-      skills: "",
+      //skills: "",
       bio: "",
-
-      newUsers: []
-    }
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleInput = this.handleInput.bind(this)
+    };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   // componentDidMount() {
   //   this.newUsersState.observe("name");
   // }
 
-  handleFormSubmit = async e => {
+  handleFormSubmit = async data => {
     // Form submission logic
-    e.preventDefault()
-
-    const newUser = {
-      name: this.state.name,
-      email: this.state.email,
-      github: this.state.github,
-      zipcode: this.state.zipcode,
-      password: this.state.password,
-      skills: this.state.skills,
-      bio: this.state.bio
-    }
 
     await this.setState({
-      newUsers: newUser
+      user: data.createUser.token
     })
-    let path = `/wall`
-    this.props.history.push(path)
 
-    console.log(this.state.newUsers)
-  }
+    localStorage.setItem("auth_token", data.createUser.token)
+
+    let path = `/wall`;
+    this.props.history.push(path);
+  };
 
   handleInput = e => {
     let value = e.target.value
@@ -116,14 +123,14 @@ class SignUp extends Component {
         />{" "}
         {/* Zipcode of the user */}
         <p />
-        <Select
+        {/*<Select
           name={"skills"}
           options={skillOptions}
           multiple={true}
           value={this.state.skills}
           placeholder={"Select Skills"}
           handleChange={e => this.handleInput(e)}
-        />{" "}
+        />{" "} */}
         {/* List of Skills (eg. Programmer, developer) */}
         <p />
         <textarea
@@ -135,13 +142,16 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />
         <p />
-        <div>
+        {/*<div>
           <ImageUpload />
-        </div>
+        </div> */}
         {/* About you */}
         <p />
-        <Button2 title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
-        {/*Submit */}
+        <Mutation mutation = {REGISTER_USER} variables = {{ input: this.state }} onCompleted={(data) => this.handleFormSubmit(data)}>
+          {createUser => (
+            <input type="submit" value="submit" onClick={createUser} />
+          )}
+        </Mutation>
         <p />
       </div>
     )

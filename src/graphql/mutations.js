@@ -13,7 +13,7 @@ const LOGIN_USER = gql`
         country
         zipcode
       }
-      token
+      tokenxs
       error {
         message
       }

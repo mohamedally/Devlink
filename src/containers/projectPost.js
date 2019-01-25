@@ -26,14 +26,6 @@ class ProjectPost extends React.Component {
   };
 
   render() {
-    // const collaborators = this.state.collaborators.map(collaborator => {
-    //   return (
-    //     <div key={uuid()}>
-    //       <li>{collaborator.name}</li>
-    //     </div>
-    //   );
-    // });
-
     const requests = this.state.project.requests.map(collaborator => {
       return (
         <div key={collaborator.user.id}>

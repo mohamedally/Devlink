@@ -210,6 +210,10 @@ class Wall extends React.Component {
               if (error) return "Error!";
               return data.projects.map(project => (
                 <Container2 key={project.id}>
+                <p></p> 
+                <p></p>
+                <p></p>
+                <p></p>
                   <li>
                     <div>
                       <Title>{project.title}</Title>

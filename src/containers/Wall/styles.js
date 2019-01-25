@@ -17,23 +17,23 @@ export const Container = styled(Flex)`
 `;
 
 export const Title = styled(Flex)`
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 2.5rem;
   justify-content: center;
 `;
 export const Name = styled(Flex)`
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 1.5rem;
   justify-content: center;
 `;
 
 export const People = styled(Flex)`
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 1rem;
   justify-content: center;
 `;
 
 export const ThreadTitle = styled(Flex)`
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 3rem;
 `;

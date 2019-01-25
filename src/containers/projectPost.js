@@ -48,7 +48,33 @@ class ProjectPost extends React.Component {
     return (
       <div>
         {/* to={`/project/${id}}` */}
-        <Container />
+        <Container>
+          <Title3>Project #1</Title3>
+          <p />
+          <div>
+            This is all you need to know about the project. ui gfhEJOWLF
+            EWOIFHEWUKfn iharuebeih reuahfelajbkuwri. ewiufgefj.
+            <p />
+          </div>
+          <Button2
+            title="Request to Join"
+            action={e => this.handleRequest(e)}
+          />
+          <div>
+            <p />
+            <Title>Requested collaborators:</Title>
+            <ul
+              style={{
+                listStyle: "none",
+                margin: "0px",
+                padding: "0px",
+                textAlign: "center"
+              }}
+            >
+              {collaborators}
+            </ul>
+          </div>
+        </Container>
       </div>
     );
   }

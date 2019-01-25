@@ -1,6 +1,30 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Button2 from "../../components/Button2";
+//import LOGIN_USER from "../../graphql/mutations"
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+
+const LOGIN_USER = gql`
+  mutation loginUser($email: String!, $password: String!) {
+    loginUser(password: $password, email: $email) {
+      user {
+        id
+        name
+        email
+        github
+        bio
+        city
+        country
+        zipcode
+      }
+      token
+      error {
+        message
+      }
+    }
+  }
+`;
 
 class Login extends Component {
   constructor(props) {
@@ -9,27 +33,30 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      user: {}
+      user: {},
+      error: ""
     };
 
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.loginComplete = this.loginComplete.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }
 
   /* This life cycle hook gets executed when the component mounts */
 
-  handleFormSubmit = async e => {
-    // Form submission logic
-    e.preventDefault();
+  loginComplete = async data => {
+    if (data.loginUser.error) {
+      await this.setState({
+        error: data.loginUser.error.message
+      });
 
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    };
+      return false;
+    }
 
     await this.setState({
-      user: user
+      user: data.loginUser.token
     });
+
+    localStorage.setItem("auth_token", data.loginUser.token);
 
     let path = `/wall`;
     this.props.history.push(path);
@@ -44,9 +71,12 @@ class Login extends Component {
   //   handlePassword = e => {};
 
   render() {
+    const { email, password, name, error } = this.state;
+
     return (
       <div>
         <p />
+        {error && <div> {error}</div>}
         <input
           className="form-input"
           type="text"
@@ -67,7 +97,18 @@ class Login extends Component {
         />{" "}
         {/* password of the user */}
         <p />
-        <Button2 title="Submit" action={e => this.handleFormSubmit(e)} />{" "}
+        <div className="login">
+          <Mutation
+            mutation={LOGIN_USER}
+            variables={{ email, password, name }}
+            onCompleted={data => this.loginComplete(data)}
+          >
+            {mutation => (
+              <input type="submit" value="submit" onClick={mutation} />
+            )}
+          </Mutation>
+        </div>
+        {/* <Button2 title="Submit" action={e => this.handleFormSubmit(e)} />{" "} */}
         {/*Submit */}
         <p />
       </div>

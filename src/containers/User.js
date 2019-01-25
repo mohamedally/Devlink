@@ -1,13 +1,13 @@
-import React from "react";
+import React from "react"
 import {
   Container,
   Title,
   Title2,
   Name
-} from "../containers/MyUserProfile/styles";
-import ProjectPost from "./projectPost";
-import { Query } from "react-apollo";
-import GET_USER from "../graphql/queries";
+} from "../containers/MyUserProfile/styles"
+import ProjectPost from "./projectPost"
+import { Query } from "react-apollo"
+import { GET_USER } from "../graphql/queries"
 
 // import ReactDOM from "react-dom";
 
@@ -18,10 +18,10 @@ const User = ({ match }) => {
         <Query query={GET_USER} variables={{ id: match.params.id }}>
           {({ loading, error, data }) => {
             if (loading) {
-              return "loading ....";
+              return "loading ...."
             }
             if (error) {
-              return error;
+              return error
             }
             if (data) {
               return (
@@ -87,13 +87,13 @@ const User = ({ match }) => {
                     ))}
                   </ul>
                 </div>
-              );
+              )
             }
           }}
         </Query>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default User;
+export default User

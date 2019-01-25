@@ -1,162 +1,72 @@
-import React from "react";
-import Button from "../../components/Button";
-import { StyledLink } from "../../components/Navbar/styles";
-import { Link } from "react-router-dom";
-import {
-  Container,
-  Container2,
-  Title,
-  Name,
-  People,
-  ThreadTitle
-} from "./styles";
-import Button2 from "../../components/Button2";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
-import GET_USER from "../../graphql/queries";
-const uuid = require("uuidv4");
+import React from "react"
+import Button from "../../components/Button"
+import { StyledLink } from "../../components/Navbar/styles"
+import { Container, Title, Name, People, ThreadTitle } from "./styles"
+import Button2 from "../../components/Button2"
+import { Query } from "react-apollo"
+import gql from "graphql-tag"
+import { Mutation } from "react-apollo"
+import { COLLABORATE_REQUEST, CREATE_PROJECT } from "../../graphql/mutations"
+import { GET_PROJECTS, GET_USER } from "../../graphql/queries"
+import { Link } from "react-router-dom"
+import config from "../../config"
 
-const ADD_REQUEST = gql`
-  mutation collaborateRequest($projectId: ID!) {
-    collaborateRequest(projectId: $projectId) {
-      message
-      error {
-        message
-      }
-    }
-  }
-`;
-
-const GET_PROJECTS = gql`
-  query projects {
-    projects {
-      id
-      title
-      description
-      leader
-      requests {
-        user {
-          id
-          name
-        }
-      }
-      collaborators {
-        user {
-          id
-          name
-        }
-      }
-      skills {
-        skill
-      }
-    }
-  }
-`;
+const uuid = require("uuidv4")
+const jwt = require("jsonwebtoken")
 
 class Wall extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      // showAddComponent: false,
       projectTitle: "",
       projectDescription: "",
       newPosts: [],
       collaborators: []
-    };
-    // this.handleAddPost = this.handleAddPost.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.handleRequest = this.handleRequest.bind(this);
+    }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleInput = this.handleInput.bind(this)
+    this.handleRequest = this.handleRequest.bind(this)
   }
 
-  // handleAddPost = async e => {
-  //   e.preventDefault();
-  //   await this.setState({
-  //     showAddComponent: !this.state.showAddComponent
-  //   });
-  // };
-
   handleRequest = async e => {
-    const newCollaborators = { name: "Jordan Lawanson", id: uuid() };
+    const newCollaborators = { name: "Jordan Lawanson", id: uuid() }
     await this.setState({
       collaborators: [...this.state.collaborators, newCollaborators]
-    });
+    })
+  }
 
-    console.log(this.state.collaborators);
-  };
-
-  handleFormSubmit = async e => {
-    // Form submission logic
-    const newPost = {
-      projecttitle: this.state.projectTitle,
-      username: "Yooni Park",
-      projectdescription: this.state.projectDescription
-    };
-    // console.log(newPost);
-    await this.setState({
-      newPosts: [...this.state.newPosts, newPost]
-    });
-    console.log(this.state.newPosts);
-  };
+  handleFormSubmit = async () => {
+    //Form submission logic
+    // const newPost = {
+    //   projecttitle: this.state.projectTitle,
+    //   username: "You",
+    //   projectdescription: this.state.projectDescription
+    // }
+    // await this.setState({
+    //   newPosts: [newPost, ...this.state.newPosts]
+    // })
+    window.location.reload()
+  }
 
   handleInput = e => {
-    let value = e.target.value;
-    let name = e.target.name;
-    // console.log("Value", value);
-    // console.log("Name", name);
-    this.setState({ [name]: value });
-  };
+    let value = e.target.value
+    let name = e.target.name
+    this.setState({ [name]: value })
+  }
 
   render() {
+    const token = localStorage.getItem("auth_token")
+    const user = token ? jwt.verify(token, config.tokenSecret).id : ""
     const newCollaborators = this.state.collaborators.map(collaborator => {
       return (
         <div key={uuid()}>
           <li>{collaborator.name}</li>
         </div>
-      );
-    });
-
-    const posts = this.state.newPosts.map(post => {
-      return (
-        <li key={uuid()}>
-          <div>
-            <Title>{post.projecttitle}</Title>
-          </div>
-          <div>
-            <StyledLink to="/profile">
-              <Name>Leader</Name>
-            </StyledLink>
-          </div>
-          <div>{post.projectdescription}</div>
-          <p />
-          <Button2
-            title="Request to Join"
-            action={e => this.handleRequest(e)}
-          />
-          <p />
-          <div>
-            <People>Requested collaborators:</People>
-            <ul
-              style={{
-                listStyle: "none",
-                margin: "0px",
-                padding: "0px"
-              }}
-            >
-              {newCollaborators}
-            </ul>
-          </div>
-          <p />
-        </li>
-      );
-    });
-    // console.log(posts);
+      )
+    })
 
     return (
       <React.Fragment>
-        {/* <Button title="Add Post" action={e => this.handleFormSubmit(e)} /> */}
-        {/* {this.state.showAddComponent ? <AddPost /> : null} */}
         <Container>
           <ThreadTitle>Post Project</ThreadTitle>
           <p />
@@ -186,36 +96,36 @@ class Wall extends React.Component {
             onChange={e => this.handleInput(e)}
           />{" "}
           <p />
-          <Button
-            title="Add Post"
-            action={e => this.handleFormSubmit(e)}
-          />{" "}
-          {/*Submit */}
-        </Container>
-        <p />
-        <ThreadTitle>Project Thread:</ThreadTitle>
-        <p />
-        <ul
-          style={{
-            listStyle: "none",
-            margin: "0px",
-            padding: "0px"
-          }}
-        >
-          {posts}
-        </ul>
-        <ul>
-          <Query query={GET_PROJECTS}>
-            {({ loading, error, data }) => {
-              if (loading) return "Loading...";
-              if (error) return "Error!";
-              return data.projects.map(project => (
-                <Container2 key={project.id}>
-                <p></p> 
-                <p></p>
-                <p></p>
-                <p></p>
-                  <li>
+          <Mutation
+            mutation={CREATE_PROJECT}
+            onCompleted={() => this.handleFormSubmit()}
+            variables={{
+              input: {
+                title: this.state.projectTitle,
+                description: this.state.projectDescription
+              }
+            }}
+          >
+            {mutation => <Button title="Add Post" action={mutation} />}
+          </Mutation>
+          <p />
+          <ThreadTitle>Project Thread:</ThreadTitle>
+          <p />
+          <ul
+            style={{
+              listStyle: "none",
+              margin: "0px",
+              padding: "0px",
+              textAlign: "center"
+            }}
+          />
+          <ul>
+            <Query query={GET_PROJECTS}>
+              {({ loading, error, data }) => {
+                if (loading) return "Loading..."
+                if (error) return "Error!"
+                return data.projects.map(project => (
+                  <li key={project.id}>
                     <div>
                       <Title>{project.title}</Title>
                     </div>
@@ -230,9 +140,9 @@ class Wall extends React.Component {
                             }}
                           >
                             {({ loading, error, data }) => {
-                              if (loading) return "Loading...";
-                              if (error) return "Error!";
-                              return <div>{data.user.name}</div>;
+                              if (loading) return "Loading..."
+                              if (error) return "Error!"
+                              return <div>{data.user.name}</div>
                             }}
                           </Query>
                         </Name>
@@ -257,19 +167,22 @@ class Wall extends React.Component {
                       </ul>
                     </div>
                     <p />
-                    <Mutation
-                      mutation={ADD_REQUEST}
-                      variables={{
-                        collaborateRequest: this.state.collaborators
-                      }}
-                    >
-                      {(collaborateRequest, { data }) => (
-                        <Button2
-                          title="Request to Join"
-                          action={collaborateRequest}
-                        />
-                      )}
-                    </Mutation>
+                    {user !== project.leader && (
+                      <Mutation
+                        mutation={COLLABORATE_REQUEST}
+                        variables={{
+                          projectId: project.id
+                        }}
+                        onCompleted={data => console.log(data)}
+                      >
+                        {(collaborateRequest, { data }) => (
+                          <Button2
+                            title="Request to Join"
+                            action={collaborateRequest}
+                          />
+                        )}
+                      </Mutation>
+                    )}
                     <p />
                     <div>
                       <People>
@@ -316,14 +229,14 @@ class Wall extends React.Component {
                     </div>
                     <p />
                   </li>
-                </Container2>
-              ));
-            }}
-          </Query>
-        </ul>
+                ))
+              }}
+            </Query>
+          </ul>
+        </Container>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Wall;
+export default Wall

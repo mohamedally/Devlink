@@ -6,7 +6,7 @@ import Button2 from "../../components/Button2"
 import { Redirect } from "react-router-dom"
 import config from "../../config"
 import { Query, Mutation } from "react-apollo"
-import GET_USER from "../../graphql/queries"
+import { GET_USER } from "../../graphql/queries"
 import gql from "graphql-tag"
 
 require("dotenv").load()
@@ -59,6 +59,7 @@ class MyUserProfile extends React.Component {
               if (error) {
                 return error
               }
+
               if (data) {
                 return (
                   <div>

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 
 const GET_USER = gql`
   query user($id: ID!) {
@@ -33,6 +33,32 @@ const GET_USER = gql`
       }
     }
   }
-`;
+`
 
-export default GET_USER;
+const GET_PROJECTS = gql`
+  query projects {
+    projects {
+      id
+      title
+      description
+      leader
+      requests {
+        user {
+          id
+          name
+        }
+      }
+      collaborators {
+        user {
+          id
+          name
+        }
+      }
+      skills {
+        skill
+      }
+    }
+  }
+`
+
+export { GET_USER, GET_PROJECTS }

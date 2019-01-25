@@ -190,6 +190,7 @@ class Wall extends React.Component {
                         <Button2
                           title="Request to Join"
                           action={collaborateRequest}
+                          style={{ whiteSpace: "normal" }}
                         />
                       )}
                     </Mutation>

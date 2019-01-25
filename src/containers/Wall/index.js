@@ -108,10 +108,10 @@ class Wall extends React.Component {
           >
             {mutation => <Button title="Add Post" action={mutation} />}
           </Mutation>
+        </Container>
           <p />
           <ThreadTitle>Project Thread:</ThreadTitle>
           <p />
-        </Container>
         <Container2>
           <ul
             style={{

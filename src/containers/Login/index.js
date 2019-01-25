@@ -1,9 +1,8 @@
 import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
-import Button2 from "../../components/Button2"
-//import LOGIN_USER from "../../graphql/mutations"
 import { Mutation } from "react-apollo"
 import gql from "graphql-tag"
+import store from "store"
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -54,6 +53,10 @@ class Login extends Component {
       user: data.loginUser.token
     })
 
+    store.set("user", {
+      token: data.loginUser.token,
+      id: data.loginUser.user.id
+    })
     localStorage.setItem("auth_token", data.loginUser.token)
 
     let path = `/wall`

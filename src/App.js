@@ -15,11 +15,35 @@ import { StyledH3 } from "./styles"
 import User from "./containers/User"
 import Users from "./containers/Users"
 import { ApolloProvider } from "react-apollo"
-import ApolloClient from "apollo-boost"
 import config from "./config"
+import { ApolloClient } from "apollo-client"
+import { InMemoryCache } from "apollo-cache-inmemory"
+import { HttpLink } from "apollo-link-http"
+import { ApolloLink } from "apollo-link"
+import store from "store"
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  const user = store.get("user")
+  const token = user ? user.token : null
+  if (token) {
+    operation.setContext({
+      headers: {
+        authorization: token
+      }
+    })
+  }
+  return forward(operation)
+})
 
 const client = new ApolloClient({
-  uri: config.graphqlUrl
+  link: ApolloLink.from([
+    authMiddleware,
+    new HttpLink({
+      uri: config.graphqlUrl,
+      credentials: "same-origin"
+    })
+  ]),
+  cache: new InMemoryCache()
 })
 
 class App extends Component {

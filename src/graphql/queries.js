@@ -23,9 +23,42 @@ const GET_USER = gql`
             github
           }
         }
+        collaborators {
+          user {
+            id
+            name
+            github
+          }
+        }
       }
     }
   }
 `
 
-export default GET_USER
+const GET_PROJECTS = gql`
+  query projects {
+    projects {
+      id
+      title
+      description
+      leader
+      requests {
+        user {
+          id
+          name
+        }
+      }
+      collaborators {
+        user {
+          id
+          name
+        }
+      }
+      skills {
+        skill
+      }
+    }
+  }
+`
+
+export { GET_USER, GET_PROJECTS }

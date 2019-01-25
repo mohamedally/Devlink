@@ -15,6 +15,18 @@ const GET_USERS = gql`
         id
         title
         description
+        requests {
+          user {
+            id
+            name
+          }
+        }
+        collaborators {
+          user {
+            id
+            name
+          }
+        }
       }
     }
   }
@@ -79,29 +91,28 @@ class Users extends React.Component {
         }}
       </Query>
     );
-    
-    let userSearch = ""
+
+    let userSearch = "";
     if (this.state.search) {
       const matches = (
         <Query query={GET_USERS}>
-        {({ loading, error, data }) => {
-          if (loading) return "Loading...";
-          if (error) return "Error!";
-          return data.users.filter(user =>
-            user.name.includes(this.state.search)
-          );
-        }}
-      </Query>
+          {({ loading, error, data }) => {
+            if (loading) return "Loading...";
+            if (error) return "Error!";
+            return data.users.filter(user =>
+              user.name.includes(this.state.search)
+            );
+          }}
+        </Query>
       );
-      console.log("HELLO THERE1")
-      console.log(matches)
-      console.log("HELLO THERE2")
-      return userSearch
+      console.log("HELLO THERE1");
+      console.log(matches);
+      console.log("HELLO THERE2");
+      return userSearch;
     }
 
-
     // console.log(matches);
-/*
+    /*
     const matchList = () => {
       return matches.map(user => {
         return (

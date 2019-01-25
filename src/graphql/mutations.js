@@ -20,5 +20,19 @@ const LOGIN_USER = gql`
     }
   }
 `
+const EDIT_USER = gql`
+  mutation editUser($input: EditUserInput!) {
+    editUser(input: $input) {
+      id
+      name
+      email
+      github
+      bio
+      city
+      country
+      zipcode
+    }
+  }
+`
 
-export default { LOGIN_USER }
+export default LOGIN_USER, EDIT_USER

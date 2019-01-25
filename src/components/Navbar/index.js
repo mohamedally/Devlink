@@ -10,6 +10,7 @@ class Navbar extends Component {
 
   logout = () => {
     localStorage.removeItem("auth_token")
+    localStorage.removeItem("user")
     this.props.history.push("/")
   }
 

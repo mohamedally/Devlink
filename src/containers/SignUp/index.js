@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import Select from "../../components/Select";
-import ImageUpload from "../../components/ImageUpload";
-import Button2 from "../../components/Button2";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react"
+import Select from "../../components/Select"
+import ImageUpload from "../../components/ImageUpload"
+import Button2 from "../../components/Button2"
+import { withRouter } from "react-router-dom"
 
 // import { StateProvider } from "react-state-provider";
-const skillOptions = ["Programming", "Development", "Testing", "Design"];
+const skillOptions = ["Programming", "Development", "Testing", "Design"]
 
 class SignUp extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     // this.newUsersState = StateProvider.getState("newUsers");
 
@@ -23,9 +23,9 @@ class SignUp extends Component {
       bio: "",
 
       newUsers: []
-    };
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInput = this.handleInput.bind(this);
+    }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
   // componentDidMount() {
@@ -34,7 +34,7 @@ class SignUp extends Component {
 
   handleFormSubmit = async e => {
     // Form submission logic
-    e.preventDefault();
+    e.preventDefault()
 
     const newUser = {
       name: this.state.name,
@@ -44,26 +44,25 @@ class SignUp extends Component {
       password: this.state.password,
       skills: this.state.skills,
       bio: this.state.bio
-    };
+    }
 
     await this.setState({
       newUsers: newUser
-    });
-    let path = `/wall`;
-    this.props.history.push(path);
+    })
+    let path = `/wall`
+    this.props.history.push(path)
 
-    console.log(this.state.newUsers);
-  };
+    console.log(this.state.newUsers)
+  }
 
   handleInput = e => {
-    let value = e.target.value;
-    let name = e.target.name;
-    // console.log("Value", value);
-    // console.log("Name", name);
-    this.setState({ [name]: value });
-  };
+    let value = e.target.value
+    let name = e.target.name
+    this.setState({ [name]: value })
+  }
 
   render() {
+    console.log(this.props.from)
     return (
       <div style={{ textAlign: "center" }}>
         <p />
@@ -145,8 +144,8 @@ class SignUp extends Component {
         {/*Submit */}
         <p />
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(SignUp);
+export default withRouter(SignUp)

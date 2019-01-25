@@ -5,7 +5,25 @@ const GET_USER = gql`
     user(id: $id) {
       id
       name
-      school
+      email
+      github
+      bio
+      city
+      country
+      zipcode
+      projects {
+        id
+        title
+        description
+        leader
+        requests {
+          user {
+            id
+            name
+            github
+          }
+        }
+      }
     }
   }
 `

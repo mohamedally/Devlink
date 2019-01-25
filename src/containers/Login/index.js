@@ -57,6 +57,7 @@ class Login extends Component {
     })
 
     localStorage.setItem("auth_token", data.loginUser.token)
+    localStorage.setItem("user", data.loginUser.user.id)
 
     let path = `/wall`
     this.props.history.push(path)

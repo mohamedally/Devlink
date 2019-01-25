@@ -1,6 +1,8 @@
 import React from "react"
 import Button2 from "../components/Button2"
 import { Container, Title3 } from "./MyUserProfile/styles"
+import { ACCEPT_REQUEST, DECLINE_REQUEST } from "../graphql/mutations"
+import { Mutation } from "react-apollo"
 const uuid = require("uuidv4")
 
 class MyProjectPost extends React.Component {
@@ -8,69 +10,50 @@ class MyProjectPost extends React.Component {
     super(props)
 
     this.state = {
-      collaborators: [],
+      collaborators: this.props.data.collaborators,
       accepted: [],
-      project: this.props.data
+      project: this.props.data,
+      requests: this.props.data.requests
     }
-    this.handleDelete = this.handleDelete.bind(this)
-    this.handleAccept = this.handleAccept.bind(this)
-    this.handleRequest = this.handleRequest.bind(this)
-  }
-
-  handleDelete = async id => {
-    await this.setState({
-      collaborators: this.state.collaborators.filter(
-        collaborator => collaborator.id !== id
-      )
-    })
-  }
-
-  handleAccept = async id => {
-    const newAccepts = this.state.collaborators.filter(
-      collaborator => collaborator.id === id
-    )
-
-    const acceptName = newAccepts.map(e => e.name)
-
-    await this.setState({
-      collaborators: this.state.collaborators.filter(
-        collaborator => collaborator.id !== id
-      ),
-      accepted: [...this.state.accepted, acceptName]
-    })
-    console.log(this.state.accepted)
-  }
-
-  handleRequest = async e => {
-    const newCollaborators = { name: "Jordan Lawanson", id: uuid() }
-    await this.setState({
-      collaborators: [...this.state.collaborators, newCollaborators]
-    })
-
-    console.log(this.state.collaborators)
   }
 
   render() {
-    const collaborators = this.state.collaborators.map(collaborator => {
-      return (
-        <div key={uuid()}>
-          <li>{collaborator.name}</li>
-          <Button2
-            title="Accept"
-            action={() => this.handleAccept(collaborator.id)}
-          />
-          <Button2
-            title="Delete"
-            action={() => this.handleDelete(collaborator.id)}
-          />
-        </div>
-      )
-    })
+    const requests = this.state.requests.length ? (
+      this.state.requests.map(request => {
+        return (
+          <div key={uuid()}>
+            <li>{request.user.name}</li>
+            <Mutation
+              mutation={ACCEPT_REQUEST}
+              onCompleted={() => window.location.reload()}
+              variables={{
+                from: request.user.id,
+                projectId: this.state.project.id
+              }}
+            >
+              {mutation => <Button2 title="Accept" action={mutation} />}
+            </Mutation>
+            <Mutation
+              mutation={DECLINE_REQUEST}
+              onCompleted={() => window.location.reload()}
+              variables={{
+                from: request.user.id,
+                projectId: this.state.project.id
+              }}
+            >
+              {mutation => <Button2 title="Delete" action={mutation} />}
+            </Mutation>
+          </div>
+        )
+      })
+    ) : (
+      <div />
+    )
 
-    const accepted = this.state.accepted.map(accepted => {
+    const accepted = this.state.collaborators.map(accepted => {
       return (
         <div key={uuid()}>
-          <li>{accepted}</li>
+          <li>{accepted.user.name}</li>
         </div>
       )
     })
@@ -93,7 +76,7 @@ class MyProjectPost extends React.Component {
                 textAlign: "center"
               }}
             >
-              {collaborators}
+              {requests}
             </ul>
           </div>
           <div style={{ fontWeight: "bold" }}>

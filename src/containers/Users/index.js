@@ -15,6 +15,18 @@ const GET_USERS = gql`
         id
         title
         description
+        requests {
+          user {
+            id
+            name
+          }
+        }
+        collaborators {
+          user {
+            id
+            name
+          }
+        }
       }
       dist_meters
     }
@@ -64,7 +76,13 @@ class Users extends React.Component {
                 <Title3>
                   <b>Projects:</b>
                 </Title3>
-                <ul>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: "0px",
+                    padding: "0px"
+                  }}
+                >
                   {user.projects.map(project => (
                     <div key={project.id}>
                       <li>
@@ -100,19 +118,36 @@ class Users extends React.Component {
       return matches
     } */
 
+    // const matchList = userSearch.map(user => {
+    //   return (
+    //     <li key={user.id}>
+    //       <StyledLink to={`/user/${user.id}`}>{user.name}</StyledLink>
+    //       <div>
+    //         <Title3>
+    //           <b>Projects:</b>
+    //         </Title3>
+    //         <ul>
+    //           {user.projects.map(project => (
+    //             <div key={project.id}>
+    //               <li>
+    //                 {this.state.showProjectComponent ? (
+    //                   <ProjectPost data={project} />
+    //                 ) : (
+    //                   project.title
+    //                 )}
+    //               </li>{" "}
+    //             </div>
+    //           ))}
+    //           <p />
+    //         </ul>
+    //       </div>
+    //     </li>
+    //   );
+    // });
 
-    // console.log(matches);
-/*
-    const matchList = () => {
-      return matches.map(user => {
-        return (
-          <li key={user.id}>
-            <StyledLink to={`/user/${user.id}`}>{user.name}</StyledLink>
-          </li>
-        );
-      }); 
-    };
+    // console.log(matchList);
 
+    /*
     if (matches.length === 0) {
       users = "No matches";
     } else if (matches.length > 0) {
@@ -138,8 +173,8 @@ class Users extends React.Component {
           />
         </div>
         <React.Fragment>
-          {users}
-        </React.Fragment>
+          <ul>{users}</ul>
+      </React.Fragment>
       </React.Fragment>
     );
   }

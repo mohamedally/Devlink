@@ -1,16 +1,16 @@
-import React, { Component } from "react"
-import Select from "../../components/Select"
-import ImageUpload from "../../components/ImageUpload"
-import Button2 from "../../components/Button2"
-import { withRouter } from "react-router-dom"
+import React, { Component } from "react";
+import Select from "../../components/Select";
+import ImageUpload from "../../components/ImageUpload";
+import Button2 from "../../components/Button2";
+import { withRouter } from "react-router-dom";
 
-import gql from "graphql-tag"
+import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
 const REGISTER_USER = gql`
   mutation createUser($input: CreateUserInput!) {
     createUser(input: $input) {
-    	user {
+      user {
         id
         name
         email
@@ -21,14 +21,14 @@ const REGISTER_USER = gql`
       token
     }
   }
-`
+`;
 
 // import { StateProvider } from "react-state-provider";
-const skillOptions = ["Programming", "Development", "Testing", "Design"]
+const skillOptions = ["Programming", "Development", "Testing", "Design"];
 
 class SignUp extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     // this.newUsersState = StateProvider.getState("newUsers");
 
@@ -39,7 +39,7 @@ class SignUp extends Component {
       zipcode: "",
       password: "",
       //skills: "",
-      bio: "",
+      bio: ""
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -51,25 +51,25 @@ class SignUp extends Component {
 
   handleFormSubmit = async data => {
     // Form submission logic
-
+    console.log("Hello there");
     await this.setState({
       user: data.createUser.token
-    })
+    });
 
-    localStorage.setItem("auth_token", data.createUser.token)
+    localStorage.setItem("auth_token", data.createUser.token);
 
     let path = `/wall`;
     this.props.history.push(path);
   };
 
   handleInput = e => {
-    let value = e.target.value
-    let name = e.target.name
-    this.setState({ [name]: value })
-  }
+    let value = e.target.value;
+    let name = e.target.name;
+    this.setState({ [name]: value });
+  };
 
   render() {
-    console.log(this.props.from)
+    console.log(this.props.from);
     return (
       <div style={{ textAlign: "center" }}>
         <p />
@@ -147,15 +147,19 @@ class SignUp extends Component {
         </div> */}
         {/* About you */}
         <p />
-        <Mutation mutation = {REGISTER_USER} variables = {{ input: this.state }} onCompleted={(data) => this.handleFormSubmit(data)}>
+        <Mutation
+          mutation={REGISTER_USER}
+          variables={{ input: this.state }}
+          onCompleted={data => this.handleFormSubmit(data)}
+        >
           {createUser => (
             <input type="submit" value="submit" onClick={createUser} />
           )}
         </Mutation>
         <p />
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(SignUp)
+export default withRouter(SignUp);

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Container, StyledLink } from "./styles"
 import { withRouter } from "react-router"
+import store from "store"
 
 class Navbar extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Navbar extends Component {
   logout = () => {
     localStorage.removeItem("auth_token")
     localStorage.removeItem("user")
+    store.clearAll()
     this.props.history.push("/")
   }
 

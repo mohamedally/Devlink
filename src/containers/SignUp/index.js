@@ -18,6 +18,7 @@ const REGISTER_USER = gql`
         zipcode
         bio
       }
+      token
     }
   }
 `
@@ -50,8 +51,13 @@ class SignUp extends Component {
 
   handleFormSubmit = async data => {
     // Form submission logic
-  
-    console.log(data)
+
+    await this.setState({
+      user: data.createUser.token
+    })
+
+    localStorage.setItem("auth_token", data.createUser.token)
+
     let path = `/wall`;
     this.props.history.push(path);
   };
@@ -136,9 +142,9 @@ class SignUp extends Component {
           onChange={e => this.handleInput(e)}
         />
         <p />
-        <div>
+        {/*<div>
           <ImageUpload />
-        </div>
+        </div> */}
         {/* About you */}
         <p />
         <Mutation mutation = {REGISTER_USER} variables = {{ input: this.state }} onCompleted={(data) => this.handleFormSubmit(data)}>

@@ -8,8 +8,6 @@ import {
 import ProjectPost from "./projectPost";
 import { Query } from "react-apollo";
 import GET_USER from "../graphql/queries";
-import Button2 from "../components/Button2";
-import gql from "graphql-tag";
 
 // import ReactDOM from "react-dom";
 

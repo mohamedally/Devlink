@@ -3,6 +3,8 @@ import { Container, Title3 } from "./MyUserProfile/styles";
 import Button from "../components/Button";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import Button2 from "../components/Button2";
+import { Title } from "./Wall/styles";
 const uuid = require("uuidv4");
 
 const GET_PROJECTS = gql`
@@ -45,6 +47,14 @@ class ProjectPost extends React.Component {
   };
 
   render() {
+    const collaborators = this.state.collaborators.map(collaborator => {
+      return (
+        <div key={uuid()}>
+          <li>{collaborator.name}</li>
+        </div>
+      );
+    });
+
     return (
       <div>
         {/* to={`/project/${id}}` */}
@@ -62,7 +72,7 @@ class ProjectPost extends React.Component {
           />
           <div>
             <p />
-            <Title>Requested collaborators:</Title>
+            <Title3>Requested collaborators:</Title3>
             <ul
               style={{
                 listStyle: "none",

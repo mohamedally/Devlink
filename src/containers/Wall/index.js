@@ -8,11 +8,13 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 const uuid = require("uuidv4");
 
-const ADD_TODO = gql`
-  mutation AddTodo($type: String!) {
-    addTodo(type: $type) {
-      id
-      type
+const ADD_REQUEST = gql`
+  mutation collaborateRequest($projectId: ID!) {
+    collaborateRequest(projectId: $projectId) {
+      message
+      error {
+        message
+      }
     }
   }
 `;
@@ -222,10 +224,19 @@ class Wall extends React.Component {
                       </ul>
                     </div>
                     <p />
-                    <Button2
-                      title="Request to Join"
-                      action={e => this.handleRequest(e)}
-                    />
+                    <Mutation
+                      mutation={ADD_REQUEST}
+                      variables={{
+                        collaborateRequest: this.state.collaborators
+                      }}
+                    >
+                      {(collaborateRequest, { data }) => (
+                        <Button2
+                          title="Request to Join"
+                          action={collaborateRequest}
+                        />
+                      )}
+                    </Mutation>
                     <p />
                     <div>
                       <People>

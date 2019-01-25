@@ -1,7 +1,15 @@
 import React from "react";
 import Button from "../../components/Button";
 import { StyledLink } from "../../components/Navbar/styles";
-import { Container, Title, Name, People, ThreadTitle } from "./styles";
+import { Link } from "react-router-dom";
+import {
+  Container,
+  Container2,
+  Title,
+  Name,
+  People,
+  ThreadTitle
+} from "./styles";
 import Button2 from "../../components/Button2";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -157,6 +165,11 @@ class Wall extends React.Component {
             name="projectTitle"
             type="text"
             value={this.state.projectTitle}
+            style={{
+              borderColor: "purple",
+              borderRadius: "3px",
+              borderWidth: "1px"
+            }}
             placeholder="Project Title"
             onChange={e => this.handleInput(e)}
           />
@@ -165,8 +178,9 @@ class Wall extends React.Component {
             className="form-input"
             type="text"
             name="projectDescription"
-            rows="10"
+            rows="5"
             cols="50"
+            style={{ borderColor: "purple", borderRadius: "5px" }}
             value={this.state.projectDescription}
             placeholder="Project Description"
             onChange={e => this.handleInput(e)}
@@ -177,31 +191,33 @@ class Wall extends React.Component {
             action={e => this.handleFormSubmit(e)}
           />{" "}
           {/*Submit */}
-          <p />
-          <ThreadTitle>Project Thread:</ThreadTitle>
-          <p />
-          <ul
-            style={{
-              listStyle: "none",
-              margin: "0px",
-              padding: "0px",
-              textAlign: "center"
-            }}
-          >
-            {posts}
-          </ul>
-          <ul>
-            <Query query={GET_PROJECTS}>
-              {({ loading, error, data }) => {
-                if (loading) return "Loading...";
-                if (error) return "Error!";
-                return data.projects.map(project => (
-                  <li key={project.id}>
+        </Container>
+        <p />
+        <ThreadTitle>Project Thread:</ThreadTitle>
+        <p />
+        <ul
+          style={{
+            listStyle: "none",
+            margin: "0px",
+            padding: "0px",
+            textAlign: "center"
+          }}
+        >
+          {posts}
+        </ul>
+        <ul>
+          <Query query={GET_PROJECTS}>
+            {({ loading, error, data }) => {
+              if (loading) return "Loading...";
+              if (error) return "Error!";
+              return data.projects.map(project => (
+                <Container2 key={project.id}>
+                  <li>
                     <div>
                       <Title>{project.title}</Title>
                     </div>
                     <div>
-                      <StyledLink to="/user/${project.leader}">
+                      <StyledLink to={`/user/${project.leader}`}>
                         <Name>Leader</Name>
                       </StyledLink>
                     </div>
@@ -250,10 +266,12 @@ class Wall extends React.Component {
                           textAlign: "center"
                         }}
                       >
-                        {console.log(project.collaborators)}
+                        {console.log("Collab", project.collaborators)}
                         {project.collaborators.map(collaborator => (
                           <li key={collaborator.user.id}>
-                            {collaborator.user.name}
+                            <Link to={`/user/${collaborator.user.id}`}>
+                              {collaborator.user.name}
+                            </Link>{" "}
                           </li>
                         ))}
                       </ul>
@@ -271,21 +289,23 @@ class Wall extends React.Component {
                           textAlign: "center"
                         }}
                       >
-                        {console.log(project.requests)}
+                        {console.log("Request", project.requests)}
                         {project.requests.map(collaborator => (
                           <li key={collaborator.user.id}>
-                            {collaborator.user.name}
+                            <Link to={`/user/${collaborator.user.id}`}>
+                              {collaborator.user.name}
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     </div>
                     <p />
                   </li>
-                ));
-              }}
-            </Query>
-          </ul>
-        </Container>
+                </Container2>
+              ));
+            }}
+          </Query>
+        </ul>
       </React.Fragment>
     );
   }

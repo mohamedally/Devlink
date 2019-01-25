@@ -13,7 +13,7 @@ export const Container = styled(Flex)`
   text-justify: center;
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
-  background-color: lightcoral;
+  background-color: white;
 `;
 
 export const Title = styled(Flex)`
@@ -24,6 +24,7 @@ export const Title = styled(Flex)`
 export const Title2 = styled(Flex)`
   font-weight: bold;
   font-size: 2rem;
+  justify-content: center;
 `;
 
 export const Title3 = styled(Flex)`
@@ -35,4 +36,5 @@ export const Name = styled(Flex)`
   font-style: italic;
   font-weight: bold;
   font-size: 2.5rem;
+  justify-content: center;
 `;

@@ -140,8 +140,7 @@ class Wall extends React.Component {
               style={{
                 listStyle: "none",
                 margin: "0px",
-                padding: "0px",
-                textAlign: "center"
+                padding: "0px"
               }}
             >
               {newCollaborators}
@@ -199,8 +198,8 @@ class Wall extends React.Component {
           style={{
             listStyle: "none",
             margin: "0px",
-            padding: "0px",
-            textAlign: "center"
+            marginLeft: "200px",
+            padding: "0px"
           }}
         >
           {posts}

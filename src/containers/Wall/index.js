@@ -119,129 +119,131 @@ class Wall extends React.Component {
         <p />
         <ThreadTitle>Project Thread:</ThreadTitle>
         <p />
-        <Container2>
-          <ul
-            style={{
-              listStyle: "none",
-              margin: "0px",
-              padding: "0px"
+
+        <ul
+          style={{
+            listStyle: "none",
+            margin: "0px",
+            padding: "0px"
+          }}
+        />
+        <ul>
+          <Query query={GET_PROJECTS}>
+            {({ loading, error, data }) => {
+              if (loading) return "Loading...";
+              if (error) return "Error!";
+              return data.projects.map(project => (
+                <Container2>
+                  <div key={project.id}>
+                    <Title>{project.title}</Title>
+                  </div>
+                  <div style={{ marginLeft: "50px" }}>
+                    <StyledLink to={`/user/${project.leader}`}>
+                      <Name>
+                        {console.log(project.leader)}
+                        <Query
+                          query={GET_USER}
+                          variables={{
+                            id: project.leader
+                          }}
+                        >
+                          {({ loading, error, data }) => {
+                            if (loading) return "Loading...";
+                            if (error) return "Error!";
+                            return <div>{data.user.name}</div>;
+                          }}
+                        </Query>
+                      </Name>
+                    </StyledLink>
+                  </div>
+                  <div style={{ marginLeft: "50px" }}>
+                    {project.description}
+                  </div>
+                  <p />
+                  <div style={{ marginLeft: "50px" }}>
+                    <People>
+                      <b>Skills Needed:</b>
+                    </People>
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        margin: "0px",
+                        padding: "0px",
+                        textAlign: "left"
+                      }}
+                    >
+                      {project.skills.map(skill => (
+                        <li key={skill.id}>{skill.skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <p />
+                  {user !== project.leader && (
+                    <Mutation
+                      mutation={COLLABORATE_REQUEST}
+                      variables={{
+                        projectId: project.id
+                      }}
+                      onCompleted={data => console.log(data)}
+                    >
+                      {(collaborateRequest, { data }) => (
+                        <Button2
+                          title="Request to Join"
+                          action={collaborateRequest}
+                        />
+                      )}
+                    </Mutation>
+                  )}
+                  <p />
+                  <div style={{ marginLeft: "50px" }}>
+                    <People>
+                      <b>Accepted Collaborators:</b>
+                    </People>
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        margin: "0px",
+                        padding: "0px",
+                        textAlign: "left"
+                      }}
+                    >
+                      {project.collaborators.map(collaborator => (
+                        <li key={collaborator.user.id}>
+                          <Link to={`/user/${collaborator.user.id}`}>
+                            {collaborator.user.name}
+                          </Link>{" "}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <p />
+                  <div style={{ marginLeft: "50px" }}>
+                    <People>
+                      <b>Requested collaborators:</b>
+                    </People>
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        margin: "0px",
+                        padding: "0px",
+                        textAlign: "left"
+                      }}
+                    >
+                      {project.requests.map(collaborator => (
+                        <li key={collaborator.user.id}>
+                          <Link to={`/user/${collaborator.user.id}`}>
+                            {collaborator.user.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <p />
+                </Container2>
+              ));
             }}
-          />
-          <ul>
-            <Query query={GET_PROJECTS}>
-              {({ loading, error, data }) => {
-                if (loading) return "Loading...";
-                if (error) return "Error!";
-                return data.projects.map(project => (
-                  <li key={project.id}>
-                    <div>
-                      <Title>{project.title}</Title>
-                    </div>
-                    <div>
-                      <StyledLink to={`/user/${project.leader}`}>
-                        <Name>
-                          {console.log(project.leader)}
-                          <Query
-                            query={GET_USER}
-                            variables={{
-                              id: project.leader
-                            }}
-                          >
-                            {({ loading, error, data }) => {
-                              if (loading) return "Loading...";
-                              if (error) return "Error!";
-                              return <div>{data.user.name}</div>;
-                            }}
-                          </Query>
-                        </Name>
-                      </StyledLink>
-                    </div>
-                    <div>{project.description}</div>
-                    <div>
-                      <People>
-                        <b>Skills Needed:</b>
-                      </People>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          margin: "0px",
-                          padding: "0px",
-                          textAlign: "left"
-                        }}
-                      >
-                        {project.skills.map(skill => (
-                          <li key={skill.id}>{skill.skill}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <p />
-                    {user !== project.leader && (
-                      <Mutation
-                        mutation={COLLABORATE_REQUEST}
-                        variables={{
-                          projectId: project.id
-                        }}
-                        onCompleted={data => console.log(data)}
-                      >
-                        {(collaborateRequest, { data }) => (
-                          <Button2
-                            title="Request to Join"
-                            action={collaborateRequest}
-                          />
-                        )}
-                      </Mutation>
-                    )}
-                    <p />
-                    <div>
-                      <People>
-                        <b>Accepted Collaborators:</b>
-                      </People>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          margin: "0px",
-                          padding: "0px",
-                          textAlign: "left"
-                        }}
-                      >
-                        {project.collaborators.map(collaborator => (
-                          <li key={collaborator.user.id}>
-                            <Link to={`/user/${collaborator.user.id}`}>
-                              {collaborator.user.name}
-                            </Link>{" "}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <p />
-                    <div>
-                      <People>
-                        <b>Requested collaborators:</b>
-                      </People>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          margin: "0px",
-                          padding: "0px",
-                          textAlign: "left"
-                        }}
-                      >
-                        {project.requests.map(collaborator => (
-                          <li key={collaborator.user.id}>
-                            <Link to={`/user/${collaborator.user.id}`}>
-                              {collaborator.user.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <p />
-                  </li>
-                ));
-              }}
-            </Query>
-          </ul>
-        </Container2>
+          </Query>
+        </ul>
       </React.Fragment>
     );
   }

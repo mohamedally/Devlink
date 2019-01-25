@@ -75,7 +75,7 @@ class Users extends React.Component {
                   style={{
                     listStyle: "none",
                     margin: "0px",
-                    padding: "0px",
+                    padding: "0px"
                   }}
                 >
                   {user.projects.map(project => (
@@ -111,40 +111,40 @@ class Users extends React.Component {
           }}
         </Query>
       );
-      console.log("HELLO THERE1");
-      console.log(matches);
-      console.log("HELLO THERE2");
-      return userSearch;
+      // console.log("HELLO THERE1");
+      // console.log(matches);
+      // console.log("HELLO THERE2");
+      // return userSearch;
     }
 
-    const matchList = userSearch.map(user => {
-      return (
-        <li key={user.id}>
-          <StyledLink to={`/user/${user.id}`}>{user.name}</StyledLink>
-          <div>
-            <Title3>
-              <b>Projects:</b>
-            </Title3>
-            <ul>
-              {user.projects.map(project => (
-                <div key={project.id}>
-                  <li>
-                    {this.state.showProjectComponent ? (
-                      <ProjectPost data={project} />
-                    ) : (
-                      project.title
-                    )}
-                  </li>{" "}
-                </div>
-              ))}
-              <p />
-            </ul>
-          </div>
-        </li>
-      );
-    });
+    // const matchList = userSearch.map(user => {
+    //   return (
+    //     <li key={user.id}>
+    //       <StyledLink to={`/user/${user.id}`}>{user.name}</StyledLink>
+    //       <div>
+    //         <Title3>
+    //           <b>Projects:</b>
+    //         </Title3>
+    //         <ul>
+    //           {user.projects.map(project => (
+    //             <div key={project.id}>
+    //               <li>
+    //                 {this.state.showProjectComponent ? (
+    //                   <ProjectPost data={project} />
+    //                 ) : (
+    //                   project.title
+    //                 )}
+    //               </li>{" "}
+    //             </div>
+    //           ))}
+    //           <p />
+    //         </ul>
+    //       </div>
+    //     </li>
+    //   );
+    // });
 
-    console.log(matchList);
+    // console.log(matchList);
 
     /*
     if (matches.length === 0) {
@@ -171,7 +171,8 @@ class Users extends React.Component {
             action={e => this.handleClick(e)}
           />
         </div>
-        {this.state.search ? <ul>{matchList}</ul> : <ul>{users}</ul>}
+        {/* {this.state.search ? <ul>{matchList}</ul> : <ul>{users}</ul>} */}
+        <ul>{users}</ul>
       </React.Fragment>
     );
   }

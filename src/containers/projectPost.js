@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Title3 } from "./MyUserProfile/styles";
 import Button2 from "../components/Button2";
 import { Link } from "react-router-dom";
+import { Container2 } from "./Wall/styles";
 
 const uuid = require("uuidv4");
 
@@ -50,17 +51,30 @@ class ProjectPost extends React.Component {
       );
     });
 
+    const newCollaborators = this.state.collaborators.map(collaborator => {
+      return (
+        <div key={uuid()}>
+          <li>
+            <Link to="/profile">{collaborator.name}</Link>
+          </li>
+        </div>
+      );
+    });
+
     return (
       <div>
         {/* to={`/project/${id}}` */}
-        <Container>
+        <Container2>
           {/* <Query query={GET_PROJECT} variables={{id: this.props.user}}> */}
-          <Title3>{this.state.project.title}</Title3>
+          <Title3 style={{ justifyContent: "center" }}>
+            {this.state.project.title}
+          </Title3>
           <p />
           <div>
             {this.state.project.description}
             <p />
           </div>
+          <p />
           <Button2
             title="Request to Join"
             action={e => this.handleRequest(e)}
@@ -78,6 +92,7 @@ class ProjectPost extends React.Component {
                 textAlign: "left"
               }}
             >
+              {newCollaborators}
               {requests}
             </ul>
             <p />
@@ -96,7 +111,7 @@ class ProjectPost extends React.Component {
             </ul>
           </div>
           {/* </Query> */}
-        </Container>
+        </Container2>
       </div>
     );
   }

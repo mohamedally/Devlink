@@ -26,11 +26,13 @@ export const Container2 = styled(Flex)`
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: ${({ theme }) => theme.fonts.primary.weight};
   background-color: white;
+  box-shadow: 5px 10px 18px #888888;
 `;
 
 export const Title = styled(Flex)`
   font-weight: bold;
   font-size: 2.5rem;
+  justify-content: center;
 `;
 export const Name = styled(Flex)`
   font-weight: bold;

@@ -197,9 +197,7 @@ class Wall extends React.Component {
                   )}
                   <p />
                   <div style={{ marginLeft: "50px" }}>
-                    <People>
-                      <b>Accepted Collaborators:</b>
-                    </People>
+                    <People />
                     <ul
                       style={{
                         listStyle: "none",
@@ -233,6 +231,7 @@ class Wall extends React.Component {
                       {project.requests.map(collaborator => (
                         <li key={collaborator.user.id}>
                           <Link to={`/user/${collaborator.user.id}`}>
+                            {newCollaborators}
                             {collaborator.user.name}
                           </Link>
                         </li>
